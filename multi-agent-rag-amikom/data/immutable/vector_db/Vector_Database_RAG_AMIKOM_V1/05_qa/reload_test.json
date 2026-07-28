@@ -1,0 +1,14 @@
+{
+  "reloaded_at_wib": "2026-07-27T12:19:34.641+07:00",
+  "status": "PASS",
+  "faiss_ntotal": 306,
+  "sqlite_record_count": 306,
+  "dimension": 384,
+  "sample_vector_id": "VEC-E5S-CH-ACA-A01-DOC-A01-ACADEMIC-POLICY-0001",
+  "sample_vector_index": 0,
+  "sample_vector_reconstruction_exact": true,
+  "faiss_index_sha256": "e7d83504bfbbc131049896f66921f4b00535dd22b0c0c74cfdf25811ac69f4b7",
+  "metadata_sqlite_sha256": "0d1ee79ec95d0341a448218681d95b04f85a5cb61ac5942611f194592c6b4b4d",
+  "reload_started_at_wib": "2026-07-27T12:19:34.625+07:00",
+  "reload_completed_at_wib": "2026-07-27T12:19:34.643+07:00"
+}

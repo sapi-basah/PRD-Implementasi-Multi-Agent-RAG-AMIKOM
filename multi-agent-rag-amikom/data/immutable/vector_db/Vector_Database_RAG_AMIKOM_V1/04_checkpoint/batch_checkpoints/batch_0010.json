@@ -1,0 +1,26 @@
+{
+  "checkpoint_id": "CP-VDB-V1-0010",
+  "batch_number": 10,
+  "first_vector_index": 288,
+  "last_vector_index": 305,
+  "first_vector_id": "VEC-E5S-CH-SCH-B02-DOC-B02-PROCEDURE-0001",
+  "last_vector_id": "VEC-E5S-CH-ADM-B07-DOC-B07-PROCEDURE-0003",
+  "processed_count": 18,
+  "successful_count": 18,
+  "failed_count": 0,
+  "vector_shape": [
+    18,
+    384
+  ],
+  "database_name": "rag_amikom_v1",
+  "database_type": "FAISS IndexIDMap2(IndexFlatIP) + SQLite metadata store",
+  "index_type": "IndexIDMap2(IndexFlatIP)",
+  "config_hash": "9c742bb4917a97de92e3341e772ac9a06d6984a6c33e9f0456adc5b8b669245c",
+  "batch_content_hash": "82cd51a8a173124ebf4edccd9b992639f25da180e650396e0b8b721a362bc95e",
+  "output_file": "04_checkpoint/batch_checkpoints/batch_0010_vectors.npy",
+  "output_hash": "f1792ee5e88338ec625ea1f5e9740f2610eecc82fd215c6da58688757e92c1b1",
+  "started_at_wib": "2026-07-27T12:19:24.284+07:00",
+  "completed_at_wib": "2026-07-27T12:19:24.287+07:00",
+  "duration_seconds": 0.004001,
+  "status": "COMPLETE"
+}

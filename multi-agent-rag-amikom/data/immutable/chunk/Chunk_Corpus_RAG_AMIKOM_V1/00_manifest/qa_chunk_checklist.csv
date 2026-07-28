@@ -1,0 +1,26 @@
+qa_id,check,status,evidence,checked_at_wib,notes
+Q01,Semua clean document memiliki chunk mapping atau alasan CONTROL/BLOCKED.,PASS,28/28 mapped,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q02,Semua chunk_id unik.,PASS,319/319 unique,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q03,Semua chunk_index berurutan dalam document_id dan chunk_type.,PASS,Sequential index check by document_id+chunk_type,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q04,Tidak ada chunk lebih dari 800 token.,PASS,max=644,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q05,Chunk naratif tidak melewati batas heading yang tidak berkaitan.,PASS,Narrative builder resets at every Markdown heading,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q06,Overlap hanya digunakan pada section panjang.,PASS,No overlap was required,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q07,A10 menghasilkan tepat 67 course row chunks.,PASS,count=67,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q08,A11 menghasilkan tepat 67 node chunks.,PASS,count=67,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q09,A12 menghasilkan tepat 52 equivalency row chunks.,PASS,count=52,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q10,A03 menghasilkan tepat 10 current event chunks.,PASS,count=10,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q11,A04/A05/D01 menghasilkan total 25 archive event chunks.,PASS,count=25,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q12,B01–B07 menghasilkan minimal satu procedure chunk per layanan.,PASS,All seven services represented,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q13,Tidak ada ACTIVE chunk dari lifecycle ARCHIVE.,PASS,Lifecycle/namespace cross-check,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q14,Tidak ada ACTIVE chunk yang memuat CF002.,PASS,CF002 only conflict/control,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q15,Tidak ada factual chunk untuk G02.,PASS,G02 has one blocker control and no factual event,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q16,A11 tidak menambahkan relasi prasyarat ambigu.,PASS,Ambiguous codes metadata-only; relation answers disabled,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q17,Semua chunk memiliki locator.,PASS,missing=0,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q18,Semua chunk memiliki source_id dan document_id.,PASS,Required identity fields populated,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q19,Semua chunk memiliki SHA-256.,PASS,Recomputed UTF-8 hashes,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q20,Semua active chunk memiliki agent namespace.,PASS,Active namespaces populated,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q21,Semua dynamic chunk memiliki TTL dan live-check flag.,PASS,TTL=1 and live_check=true,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q22,Tidak ada PII mahasiswa.,PASS,pattern_hits=NONE,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q23,Tidak ada chunk duplikat exact-text tanpa alasan.,PASS,duplicate_hashes=0,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q24,Raw Corpus dan Clean Corpus tidak berubah.,PASS,Immutable hashes rechecked again during finalization,2026-07-26T09:25:38+07:00,NOT_APPLICABLE
+Q25,30 core evaluation cases memiliki coverage atau accepted blocker.,PASS,covered=30/30,2026-07-26T09:25:38+07:00,NOT_APPLICABLE

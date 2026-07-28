@@ -1,0 +1,8 @@
+{
+  "checked_at_wib": "2026-07-27T12:19:34.659+07:00",
+  "complete_batches_detected": 10,
+  "resume_skip_complete_events": 10,
+  "expected_batches": 10,
+  "status": "PASS",
+  "note": "PASS means all previously COMPLETE batches were detected and skipped without reinsertion."
+}

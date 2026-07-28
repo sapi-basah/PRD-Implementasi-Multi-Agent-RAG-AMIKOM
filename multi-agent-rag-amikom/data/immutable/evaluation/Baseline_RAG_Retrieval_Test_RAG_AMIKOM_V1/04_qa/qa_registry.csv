@@ -1,0 +1,19 @@
+qa_id,description,status,evidence
+Q01,Database berhasil dibuka kembali,PASS,FAISS ntotal=306 d=384; SQLite vector_records=306; hash faiss.index dan metadata.sqlite identik dengan reload_test.json tahap sebelumnya.
+Q02,Query memakai prefix 'query:',PARTIAL,"Prefix 'query: ' dibentuk dan disimpan pada field formatted_query untuk 36 query, tetapi tidak pernah masuk ke encoder karena encoder diblokir; prefix 'passage:' tidak pernah dipakai untuk pertanyaan."
+Q03,Query vector valid dan dimensi 384,FAIL,NOT_EXECUTED. Model Xenova/multilingual-e5-small rev 761b726... tidak dapat diunduh (huggingface.co diblokir proxy 403) sehingga tidak ada query vector yang dihasilkan.
+Q04,Filter dilakukan sebelum ranking,PASS,candidate_indexes() mengambil vector_index dari SQLite lebih dahulu; skor hanya dihitung pada kandidat tersebut (tidak ada global top-k).
+Q05,Current search mengambil 0 archive,PASS,archive_leakage_count = 0 pada seluruh 33 query bermode CURRENT (k=10).
+Q06,Historical search hanya memakai archive,PASS,3 query HISTORICAL (EV-S02/S03/S04) 100% mengembalikan lifecycle ARCHIVE.
+Q07,G02 memicu abstain/handoff,PASS,EV-S01 ABSTAIN; EV-C01/C03 partial abstain + handoff DAAK; tidak ada tanggal Ganjil 2026/2027 yang muncul pada jawaban mana pun.
+Q08,CF002 memicu conflict response,PASS,"EV-A04, EV-C05, EV-G05 semuanya ESCALATE dan mengungkap konflik; tidak ada nilai IPK tunggal yang dipilih."
+Q09,Dynamic record diperiksa freshness,PASS,"10 record ACTIVE_DYNAMIC (A03, ttl=1 hari, snapshot 2026-07-24) dinilai expired pada 2026-07-27 -> response_mode LIVE_CHECK_OR_ABSTAIN."
+Q10,Seluruh 30 CORE dievaluasi,PASS,30 baris pada Retrieval_Results_CORE.jsonl dan 30 jawaban baseline.
+Q11,Seluruh 6 SUPPLEMENTARY diuji out-of-scope,PASS,"6 baris SUPPLEMENTARY, semuanya REFUSE + redirect, 0 retrieval faktual."
+Q12,Top-k dibandingkan,PASS,"k=1,3,5,10 dijalankan penuh untuk 36 query; tabel perbandingan tersedia."
+Q13,Metrik retrieval dihitung,PASS,"Hit@k, Recall@k, Precision@k, MRR, source/namespace/control accuracy, archive isolation, latency mean/median/P95."
+Q14,Baseline RAG menghasilkan citation,PASS,23 jawaban faktual seluruhnya bersitasi chunk yang valid; 13 jawaban kontrol tanpa sitasi karena memang tidak melakukan retrieval faktual.
+Q15,Unsupported claim diperiksa,PASS,"check_generation.py: 0 token numerik tak-terdukung, 0 citation mismatch, 0 penggunaan ARCHIVE untuk pertanyaan current, 0 kebocoran PII."
+Q16,Latency tercatat,PASS,control/filter/ranking/total per query per k tersimpan pada JSONL.
+Q17,Hasil dapat direproduksi,PARTIAL,Pipeline deterministik (BM25 + aturan kontrol) dan dapat diulang byte-identik; tetapi tahap ini TIDAK dapat direproduksi dengan encoder yang dimandatkan sampai model E5 tersedia.
+Q18,Artefak sebelumnya tidak berubah,PASS,SHA-256 keenam artefak input diverifikasi ulang dan identik dengan final_package_validation.json; database dibuka read-only (mode=ro).

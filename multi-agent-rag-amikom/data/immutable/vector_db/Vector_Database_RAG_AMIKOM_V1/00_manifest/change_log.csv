@@ -1,0 +1,2 @@
+﻿change_id,changed_at_wib,category,previous_status,new_status,basis,scope_impact
+CHG-VECTOR-DB-V1,2026-07-27T12:19:34.644+07:00,VECTOR_DATABASE_AND_INDEXING,Embedding Gate=PASS; Ready for Vector Database=YES; Vector Database Executed=NO; Ready for Retrieval Testing=NO,Vector Database Status=COMPLETE; Vector Database Gate=PASS; Ready for Retrieval Testing=YES,"306 existing E5S vectors indexed in persistent FAISS with complete SQLite metadata; reload, filters, and Q01-Q18 PASS.",NONE; Scope remains FROZEN and accepted blockers are unchanged.

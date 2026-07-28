@@ -1,0 +1,49 @@
+{
+  "evaluated_at_wib": "2026-07-27T14:18:52.424217+07:00",
+  "stage": "BASELINE_RAG_AND_RETRIEVAL_TESTING",
+  "scope_status": "FROZEN",
+  "vector_database_gate": "PASS",
+  "retrieval_testing": "PARTIALLY_COMPLETE",
+  "baseline_rag": "COMPLETE",
+  "baseline_top_k": 5,
+  "baseline_top_k_is_final_production": false,
+  "retrieval_metrics": {
+    "hit_at_1": 0.65,
+    "hit_at_3": 0.8,
+    "hit_at_5": 0.8,
+    "hit_at_10": 0.95,
+    "recall_at_5": 0.7275,
+    "recall_at_10": 0.9125,
+    "precision_at_5": 0.3975,
+    "mrr_at_10": 0.7439,
+    "measured_with": "FALLBACK_LEXICAL_BM25_V1 (NOT the mandated E5 encoder)"
+  },
+  "control_accuracy": 1.0,
+  "namespace_filter_accuracy": 1.0,
+  "archive_leakage": 0,
+  "hallucination": {
+    "unsupported_claim_count": 0,
+    "citation_mismatch_count": 0,
+    "archive_used_for_current_count": 0,
+    "synthetic_fact_on_blocker_count": 0,
+    "pii_violation_count": 0
+  },
+  "qa_summary": {
+    "PASS": 15,
+    "PARTIAL": 2,
+    "FAIL": 1
+  },
+  "retrieval_gate": "CONDITIONAL_PASS",
+  "baseline_rag_gate": "CONDITIONAL_PASS",
+  "gate_rationale": "Seluruh kriteria fungsional (isolasi filter/lifecycle, keputusan kontrol, kelengkapan metrik, nol archive leakage, nol unsupported claim, nol pelanggaran PII, citation dapat ditelusuri) terpenuhi. Namun tahap ini TIDAK menjalankan vector search dengan encoder yang dimandatkan (Xenova/multilingual-e5-small rev 761b726...) karena model tidak dapat diunduh di lingkungan eksekusi; retrieval memakai fallback leksikal BM25 sehingga angka Hit@k/MRR TIDAK mewakili performa vector database sesungguhnya dan baseline_top_k belum tervalidasi secara semantik. Karena itu kedua gate ditetapkan CONDITIONAL_PASS, bukan PASS.",
+  "ready_for_multi_agent": "NO",
+  "multi_agent_executed": "NO",
+  "accepted_blockers_unchanged": [
+    "G01",
+    "G02",
+    "G04",
+    "CF002",
+    "MR-A11-RELATIONS"
+  ],
+  "open_stage_blocker": "QUERY_ENCODER_UNAVAILABLE"
+}

@@ -1,0 +1,354 @@
+{
+  "validated_at_wib": "2026-07-26T09:41:13+07:00",
+  "status": "PASS",
+  "checks_pass": 36,
+  "checks_fail": 0,
+  "chunk_corpus_gate": "PASS",
+  "ready_for_embedding": "YES",
+  "embedding_executed": "NO",
+  "ready_for_vector_database": "NO",
+  "ready_for_retrieval_testing": "NO",
+  "ready_for_multi_agent": "NO",
+  "inventory_scope": "ALL_PACKAGE_FILES_EXCEPT_PACKAGE_FILE_INVENTORY_ITSELF",
+  "checks": [
+    {
+      "check_id": "F01",
+      "check": "Five non-ZIP standalone deliverables exist before final packaging.",
+      "status": "PASS",
+      "evidence": [
+        "Manifest_Chunk_Corpus_RAG_AMIKOM_V1.xlsx",
+        "Laporan_Chunking_Corpus_RAG_AMIKOM.pdf",
+        "README_Chunk_Corpus.md",
+        "Chunk_Corpus_RAG_AMIKOM_V1.jsonl",
+        "Chunk_Review_Samples_RAG_AMIKOM_V1.xlsx"
+      ]
+    },
+    {
+      "check_id": "F02",
+      "check": "Required package JSONL files exist.",
+      "status": "PASS",
+      "evidence": [
+        "chunk_active_academic.jsonl",
+        "chunk_active_schedule.jsonl",
+        "chunk_active_administration.jsonl",
+        "chunk_active_dynamic_schedule.jsonl",
+        "chunk_archive_schedule.jsonl",
+        "chunk_conflict_verifier.jsonl",
+        "chunk_blocked_verifier.jsonl",
+        "chunk_control.jsonl",
+        "Chunk_Corpus_RAG_AMIKOM_V1.jsonl"
+      ]
+    },
+    {
+      "check_id": "F03",
+      "check": "Standalone README and embedding JSONL match package copies.",
+      "status": "PASS",
+      "evidence": {
+        "readme": "1a48e0ce012c6a69877164de422879eb98773e070b1ea4735ff152200becd757",
+        "jsonl": "9bc4147b2872db0dba4ff46b0d1050662f61975b672555212ddabdf5b68e174e"
+      }
+    },
+    {
+      "check_id": "F04",
+      "check": "Standalone workbook/report match package copies.",
+      "status": "PASS",
+      "evidence": {
+        "manifest": "614891d822963ea93694e62110d68d9297a37fee5c4f1d56968f4b036613ed75",
+        "report": "f051e9498e4e71b7392b8bb412fcc1d73ae9238764fb68a502f2ebcf96c6a39b"
+      }
+    },
+    {
+      "check_id": "F05",
+      "check": "Clean Corpus V1 deliverables remain unchanged.",
+      "status": "PASS",
+      "evidence": {
+        "Clean_Corpus_RAG_AMIKOM_V1.zip": "668f2931d95412bc204271268d6c5e6b20da5440ec38c5d7e8cc2f735cea71b6",
+        "Manifest_Clean_Corpus_RAG_AMIKOM_V1.xlsx": "8f13a3d7c8741ec4aa4812a3d62ed3b8190b73bf035c63bf410cb6759129ddc3",
+        "Laporan_Cleaning_Normalisasi_Metadata_Corpus_RAG_AMIKOM.pdf": "d26ef3a39de7f51bcbba796096d4c9376307bc7af882445518693e8945e86faf",
+        "README_Clean_Corpus.md": "adab5a251ed7c8219dd2f159c1319e2fb6c18dd5672508fc203e210f766f6eca",
+        "Structured_Tables_RAG_AMIKOM_V1.xlsx": "94012ee9d7e1f112cd5c27a4905bacc72db2110c388bd4b37c695d9b1b4907f7"
+      }
+    },
+    {
+      "check_id": "F06",
+      "check": "Raw Corpus V1 deliverables remain unchanged.",
+      "status": "PASS",
+      "evidence": {
+        "Raw_Corpus_RAG_AMIKOM_V1.zip": "f1af33d51b708b6a748a3155e65401f00de542dc961d2dacb0aeb638f7ad7c87",
+        "Manifest_Raw_Corpus_RAG_AMIKOM_V1.xlsx": "9324e71dbdf841c0e3c09c6aea3f0bc80b23925bde111ed28cb395e42e6312d7"
+      }
+    },
+    {
+      "check_id": "F06-Cle",
+      "check": "Clean_Corpus_RAG_AMIKOM_V1.zip CRC is valid.",
+      "status": "PASS",
+      "evidence": "NO_BAD_MEMBER"
+    },
+    {
+      "check_id": "F06-Raw",
+      "check": "Raw_Corpus_RAG_AMIKOM_V1.zip CRC is valid.",
+      "status": "PASS",
+      "evidence": "NO_BAD_MEMBER"
+    },
+    {
+      "check_id": "F07",
+      "check": "All 28 clean paths still exist and match clean manifest hashes.",
+      "status": "PASS",
+      "evidence": {
+        "rows": 28,
+        "missing": [],
+        "bad_hash": []
+      }
+    },
+    {
+      "check_id": "F08",
+      "check": "Chunk manifest contains 319 rows and all required split JSONL contain 319 unique chunks.",
+      "status": "PASS",
+      "evidence": {
+        "manifest": 319,
+        "split": 319,
+        "files": {
+          "chunk_active_academic.jsonl": 243,
+          "chunk_active_schedule.jsonl": 3,
+          "chunk_active_administration.jsonl": 25,
+          "chunk_active_dynamic_schedule.jsonl": 10,
+          "chunk_archive_schedule.jsonl": 25,
+          "chunk_conflict_verifier.jsonl": 2,
+          "chunk_blocked_verifier.jsonl": 1,
+          "chunk_control.jsonl": 10
+        }
+      }
+    },
+    {
+      "check_id": "F09",
+      "check": "Manifest and split JSONL chunk_id sets are identical.",
+      "status": "PASS",
+      "evidence": "SET_EQUAL"
+    },
+    {
+      "check_id": "F10",
+      "check": "Combined JSONL contains only and all embedding candidates.",
+      "status": "PASS",
+      "evidence": {
+        "combined": 306,
+        "expected": 306
+      }
+    },
+    {
+      "check_id": "F11",
+      "check": "Every chunk object has the required metadata schema.",
+      "status": "PASS",
+      "evidence": {
+        "required_fields": 44
+      }
+    },
+    {
+      "check_id": "F12",
+      "check": "All chunk SHA-256 values recompute from real UTF-8 chunk_text.",
+      "status": "PASS",
+      "evidence": "319/319"
+    },
+    {
+      "check_id": "F13",
+      "check": "Chunk IDs, hashes, and texts are unique.",
+      "status": "PASS",
+      "evidence": "319 unique IDs/hashes/texts"
+    },
+    {
+      "check_id": "F14",
+      "check": "All chunks obey the 800-token global maximum.",
+      "status": "PASS",
+      "evidence": {
+        "min": 21,
+        "max": 644
+      }
+    },
+    {
+      "check_id": "F15",
+      "check": "Chunk indices are contiguous per document_id+chunk_type.",
+      "status": "PASS",
+      "evidence": "groups=32"
+    },
+    {
+      "check_id": "F16",
+      "check": "Required source row counts are exact.",
+      "status": "PASS",
+      "evidence": {
+        "A10": 67,
+        "A11": 67,
+        "A12": 52,
+        "A03": 10,
+        "archive": 25
+      }
+    },
+    {
+      "check_id": "F17",
+      "check": "Lifecycle counts and embedding rules are exact.",
+      "status": "PASS",
+      "evidence": {
+        "ACTIVE": 271,
+        "ACTIVE_DYNAMIC": 10,
+        "ARCHIVE": 25,
+        "CONFLICT": 2,
+        "BLOCKED": 1,
+        "CONTROL": 10
+      }
+    },
+    {
+      "check_id": "F18",
+      "check": "Archive is isolated from active retrieval.",
+      "status": "PASS",
+      "evidence": "25/25 archive isolated"
+    },
+    {
+      "check_id": "F19",
+      "check": "Dynamic chunks have TTL=1 and live check.",
+      "status": "PASS",
+      "evidence": "10/10 dynamic"
+    },
+    {
+      "check_id": "F20",
+      "check": "G02 has a blocker control and no factual event.",
+      "status": "PASS",
+      "evidence": [
+        "CH-BLK-G02-DOC-G02-BLOCKER_CONTROL-0001"
+      ]
+    },
+    {
+      "check_id": "F21",
+      "check": "CF002 has exactly two isolated conflict claims and no active retrieval.",
+      "status": "PASS",
+      "evidence": "2 isolated claims"
+    },
+    {
+      "check_id": "F22",
+      "check": "Ambiguous A11 relations are metadata-only and disabled.",
+      "status": "PASS",
+      "evidence": "5 ambiguous nodes"
+    },
+    {
+      "check_id": "F23",
+      "check": "All chunks have real locators and source/document IDs.",
+      "status": "PASS",
+      "evidence": "319/319"
+    },
+    {
+      "check_id": "F24",
+      "check": "No student personal-number-like value is present in chunk_text.",
+      "status": "PASS",
+      "evidence": "NONE"
+    },
+    {
+      "check_id": "F25",
+      "check": "All 28 clean documents map to chunks/shared representation/blocker.",
+      "status": "PASS",
+      "evidence": "28/28"
+    },
+    {
+      "check_id": "F26",
+      "check": "Evaluation coverage is 30 CORE covered and 6 supplementary OUT_OF_SCOPE.",
+      "status": "PASS",
+      "evidence": {
+        "core_covered": 30,
+        "supplementary_out_of_scope": 6
+      }
+    },
+    {
+      "check_id": "F27",
+      "check": "Manual review meets 10%/minimum-25 rule and all samples pass.",
+      "status": "PASS",
+      "evidence": {
+        "samples": 32,
+        "pass": 32
+      }
+    },
+    {
+      "check_id": "F28",
+      "check": "Q01–Q25 are present and PASS.",
+      "status": "PASS",
+      "evidence": {
+        "pass": 25,
+        "total": 25
+      }
+    },
+    {
+      "check_id": "F29",
+      "check": "Manifest workbook has the exact 16 required sheets.",
+      "status": "PASS",
+      "evidence": [
+        "00_Ringkasan",
+        "01_Chunk_Manifest",
+        "02_Document_Chunk_Mapping",
+        "03_Academic_Chunks",
+        "04_Schedule_Chunks",
+        "05_Administration_Chunks",
+        "06_Archive_Chunks",
+        "07_Conflict_Blocker_Control",
+        "08_Token_Statistics",
+        "09_Locator_Registry",
+        "10_Hash_Registry",
+        "11_Evaluation_Coverage",
+        "12_Manual_Review",
+        "13_QA_Registry",
+        "14_Change_Log",
+        "15_Chunking_Log"
+      ]
+    },
+    {
+      "check_id": "F30",
+      "check": "Review workbook has its two required sheets.",
+      "status": "PASS",
+      "evidence": [
+        "00_Ringkasan",
+        "01_Review_Samples"
+      ]
+    },
+    {
+      "check_id": "F31",
+      "check": "Workbook formula scans contain zero error matches.",
+      "status": "PASS",
+      "evidence": [
+        "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+        "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+      ]
+    },
+    {
+      "check_id": "F32",
+      "check": "Final PDF is valid A4 and rendered as eight pages.",
+      "status": "PASS",
+      "evidence": {
+        "pages": "8"
+      }
+    },
+    {
+      "check_id": "F33",
+      "check": "All registered authority/input files are READ_OK.",
+      "status": "PASS",
+      "evidence": "12/12"
+    },
+    {
+      "check_id": "F34",
+      "check": "Preliminary gate records PASS and Ready for Embedding YES while downstream stages remain NO.",
+      "status": "PASS",
+      "evidence": {
+        "Scope Status": "FROZEN",
+        "Clean Corpus Gate": "PASS",
+        "Chunking Status": "COMPLETE",
+        "Academic Chunk Corpus": "READY",
+        "Schedule Chunk Corpus": "READY",
+        "Administration Chunk Corpus": "READY",
+        "Archive Chunk Corpus": "READY",
+        "Conflict/Blocker Control": "READY",
+        "Chunk Metadata": "COMPLETE",
+        "PII Check": "PASS",
+        "Evaluation Coverage": "COMPLETE",
+        "Chunk Corpus Gate": "PASS",
+        "Ready for Embedding": "YES",
+        "Embedding Executed": "NO",
+        "Ready for Vector Database": "NO",
+        "Ready for Retrieval Testing": "NO",
+        "Ready for Multi-Agent": "NO"
+      }
+    }
+  ]
+}

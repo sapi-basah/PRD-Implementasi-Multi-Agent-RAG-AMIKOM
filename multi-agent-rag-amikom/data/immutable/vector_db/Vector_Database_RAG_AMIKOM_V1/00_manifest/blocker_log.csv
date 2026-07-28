@@ -1,0 +1,6 @@
+﻿blocker_id,status,database_action,response_mode,handoff
+G01,PARTIALLY_RESOLVED_ACCEPTED_BLOCKER,"10 ACTIVE_DYNAMIC records indexed with TTL=1, live_check_required=true, and snapshot preserved.",LIVE_CHECK_OR_ABSTAIN,DAAK / official academic calendar channel
+G02,OPEN_ACCEPTED_BLOCKER,No synthetic agenda record indexed.,ABSTAIN,DAAK / official agenda publication channel
+G04,PARTIALLY_RESOLVED,Course-code precedence metadata retained; conflict remains excluded.,ANSWER_WITH_PRECEDENCE_AND_ESCALATE_CONFLICT,Program Studi S1 Informatika
+CF002,OPEN_ACCEPTED_BLOCKER,No CONFLICT record indexed.,ESCALATE,Fakultas Ilmu Komputer / DAAK
+MR-A11-RELATIONS,NEEDS_MANUAL_REVIEW,No CONTROL relation record indexed; ambiguity remains answer-disabled.,ASK_CONTEXT_OR_ESCALATE,Program Studi S1 Informatika

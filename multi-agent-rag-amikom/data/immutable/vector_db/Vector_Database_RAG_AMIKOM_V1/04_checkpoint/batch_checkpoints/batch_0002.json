@@ -1,0 +1,26 @@
+{
+  "checkpoint_id": "CP-VDB-V1-0002",
+  "batch_number": 2,
+  "first_vector_index": 32,
+  "last_vector_index": 63,
+  "first_vector_id": "VEC-E5S-CH-ACA-A02-DOC-A02-ACTIVE-CURRICULUM_NARRATIVE-0009",
+  "last_vector_id": "VEC-E5S-CH-ADM-A01-DOC-A01-ADMIN-ADMIN_POLICY-0007",
+  "processed_count": 32,
+  "successful_count": 32,
+  "failed_count": 0,
+  "vector_shape": [
+    32,
+    384
+  ],
+  "database_name": "rag_amikom_v1",
+  "database_type": "FAISS IndexIDMap2(IndexFlatIP) + SQLite metadata store",
+  "index_type": "IndexIDMap2(IndexFlatIP)",
+  "config_hash": "9c742bb4917a97de92e3341e772ac9a06d6984a6c33e9f0456adc5b8b669245c",
+  "batch_content_hash": "e8500e2c94515bd852e8e7113f7da4f83dc01cbca38437eb06443ba88dc9f2ab",
+  "output_file": "04_checkpoint/batch_checkpoints/batch_0002_vectors.npy",
+  "output_hash": "69f924ffc42727ecbc603a80616f8e169bb77d008e762111fded78c1201dae28",
+  "started_at_wib": "2026-07-27T12:18:55.979+07:00",
+  "completed_at_wib": "2026-07-27T12:18:55.983+07:00",
+  "duration_seconds": 0.003284,
+  "status": "COMPLETE"
+}

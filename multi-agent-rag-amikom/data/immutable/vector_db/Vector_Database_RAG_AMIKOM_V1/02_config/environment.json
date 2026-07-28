@@ -1,0 +1,15 @@
+{
+  "captured_at_wib": "2026-07-27T12:19:34.507+07:00",
+  "platform": "Linux-6.12.13-x86_64-with-glibc2.39",
+  "architecture": "x86_64",
+  "python_version": "3.12.13 (main, Mar  3 2026, 14:59:34) [Clang 21.1.4 ]",
+  "cpu_count": 9,
+  "disk_free_gib_at_start": 54.06633377075195,
+  "faiss_version": "1.14.3",
+  "numpy_version": "2.5.1",
+  "sqlite_version": "3.50.4",
+  "database_backend_selection": "Chroma unavailable; FAISS fallback selected.",
+  "device": "cpu",
+  "index_type": "IndexIDMap2(IndexFlatIP)",
+  "distance_metric": "cosine_via_normalized_inner_product"
+}

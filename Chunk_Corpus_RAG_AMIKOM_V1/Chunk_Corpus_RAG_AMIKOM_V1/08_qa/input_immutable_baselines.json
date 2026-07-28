@@ -1,0 +1,44 @@
+{
+  "captured_at_wib": "2026-07-26T09:25:38+07:00",
+  "raw_inputs": {
+    "Raw_Corpus_RAG_AMIKOM_V1.zip": "f1af33d51b708b6a748a3155e65401f00de542dc961d2dacb0aeb638f7ad7c87",
+    "Manifest_Raw_Corpus_RAG_AMIKOM_V1.xlsx": "9324e71dbdf841c0e3c09c6aea3f0bc80b23925bde111ed28cb395e42e6312d7"
+  },
+  "clean_inputs": {
+    "Clean_Corpus_RAG_AMIKOM_V1.zip": "668f2931d95412bc204271268d6c5e6b20da5440ec38c5d7e8cc2f735cea71b6",
+    "Manifest_Clean_Corpus_RAG_AMIKOM_V1.xlsx": "8f13a3d7c8741ec4aa4812a3d62ed3b8190b73bf035c63bf410cb6759129ddc3",
+    "Laporan_Cleaning_Normalisasi_Metadata_Corpus_RAG_AMIKOM.pdf": "d26ef3a39de7f51bcbba796096d4c9376307bc7af882445518693e8945e86faf",
+    "README_Clean_Corpus.md": "adab5a251ed7c8219dd2f159c1319e2fb6c18dd5672508fc203e210f766f6eca",
+    "Structured_Tables_RAG_AMIKOM_V1.xlsx": "94012ee9d7e1f112cd5c27a4905bacc72db2110c388bd4b37c695d9b1b4907f7"
+  },
+  "clean_manifest_artifacts": {
+    "01_active/academic/A01__clean__panduan-universitas-akademik__2025-2026.md": "bee44874a9b1da807305337301c3e7f4949157de8919301fe5cf3493e813d97c",
+    "01_active/administration/A01__clean__panduan-universitas-administrasi__2025-2026.md": "d0c5bb8750a0df8527c39c62999cf0ae32968650392de2e258ae8652f85c9039",
+    "01_active/academic/A02__clean__panduan-fik-nonkonflik__2025-2026.md": "4e10e930edd641995d440f6cf3a240dab6243b7f076b758170d0c0ced5663531",
+    "03_conflict/academic/A02__clean__konflik-ipk-cf002__2025-2026.md": "c1ac78ed8741f2ff06405acea8c7031fa85ad5a3b4bde106f1e3ffad848fa2a7",
+    "01_active/academic/A06__clean__indeks-kurikulum-rps__2025.md": "9c00a218e54083291b4146c0e9fd7cdbe4cbf54d2c1c0808bbdbf38d1f471687",
+    "01_active/academic/A07__clean__jalur-lulus-nonkonflik__2025.md": "0616eaf9373540ef4fff5976060ee70c91c2ee6cf2c21f0663b5a09f04f3cba4",
+    "03_conflict/academic/A07__clean__konflik-ipk-cf002__2025.md": "ecc37dfd841c876717ca3c15f9988e6e6ba489181bae7915192f202e06a8f7e0",
+    "01_active/academic/A10__clean__daftar-mata-kuliah-kurikulum-2025__v1.md": "266bc38278210070a9de61b29b013b5d82a2db501d680d3fdc6115198c07f141",
+    "05_structured_tables/academic/A10__table__daftar-mata-kuliah-kurikulum-2025.csv": "354503b810863d8cec66c9824b267ad888d8e1aa2c0d35cf1373c36daa484f73",
+    "01_active/academic/A11__clean__bagan-mata-kuliah-kurikulum-2025__v1.md": "2586043cb59415d57a6c9389e69ee33d355dd3f11c62ad77eccbbee78ec0ea3d",
+    "05_structured_tables/academic/A11__table__bagan-mata-kuliah-kurikulum-2025.csv": "6f031675625509e2ccfcd99e2afac523d5de78f4cb3f9777971a4c5e8bde775b",
+    "01_active/academic/A12__clean__penyetaraan-kurikulum-2021-2025__v1.md": "df1a026915d40bf7378dd45574e99cf99668f171e9d2da6bad160d2a9610d7cb",
+    "05_structured_tables/academic/A12__table__penyetaraan-kurikulum-2021-2025.csv": "f61685bfaa4d15020b8f6956b9a1710927cc3169539327a191710c12aac560b3",
+    "01_active/schedule/A03__clean__kalender-akademik__2026-2027.md": "17b738ee3f6a34d71a869691f6ff14bd33bf0a9ec53889e4edcb0535f73d0946",
+    "05_structured_tables/schedule/A03__table__kalender-akademik-2026-2027.csv": "85f4c49112d7641cf8da42229c57d2bb9483ece9103adfa1663ce8d4c6a3d129",
+    "01_active/schedule/B02__clean__pengisian-krs__current.md": "ec85f3b1d4bc77e5c5375e6e60e36343c58c7ab2fe773e48ef838e48a8ec8632",
+    "02_archive/schedule/A04__clean__kalender-akademik-2025-2026__archive.md": "5c505988affaa7925d283fc4cce9896fa8a065f2f1d69f8dd2ac5d859d7f0d89",
+    "02_archive/schedule/A05__clean__agenda-genap-2025-2026__archive.md": "c7282554265cef09563e314125fa29322d14574e1116a0d2f4a7c62d177292c5",
+    "02_archive/schedule/D01__clean__agenda-ganjil-2025-2026__archive.md": "be073db62ffc5fd4f58f1730c6433535f49e301850ad0e3e49a6656c42bfe84f",
+    "05_structured_tables/schedule/ARCHIVE__table__agenda-dan-kalender-2025-2026.csv": "f0235ef7188ff05b5f1af2194b40c1e99ce969029cb4ece37a674fe1580ae669",
+    "01_active/administration/B01__clean__surat-dan-formulir__current.md": "b5d2f5093ff83cdd456ee1b156866bc790fc4489651fda1873c603dcfdea996b",
+    "01_active/administration/B03__clean__permohonan-cuti__current.md": "f8fcbd31ee905b5267c1d9056257212c1261cc3b0e7eac378eeab1c23105814b",
+    "01_active/administration/B04__clean__prosedur-skak__current.md": "0cf9d5169c9bd4fae631ec4a86c1a03ebb7d7d6b2d7aae78b2a5649b34b028b4",
+    "01_active/administration/B05__clean__legalisir__current.md": "386e23dbb89231cbd1ec72d6bcac5ac0896e563a2bed505dcbaa8ba0e348fd56",
+    "01_active/administration/B06__clean__ktm__current.md": "b953dd25c458a1f0d687eddf023ae8314a61c8e3091dc6d076151e7b7176dba3",
+    "01_active/administration/B07__clean__perubahan-data-pddikti__current.md": "8d011d09dd3f78390ad3e806ede10ec4b0ecde3a4833a26c8871b949e6f35962",
+    "05_structured_tables/administration/B01-B07__table__prosedur-administrasi.csv": "7033f5cbb16f200ca32b9211c1601813beb9db71707ba1c808b316db48677a9e",
+    "04_blocked/G02__blocked__agenda-ganjil-2026-2027__not-published.md": "22c13adff9293afdece6cd26eca94ede333adc1ec98bd8ab8fac07efb3279081"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "scored_subset": [
+    "EV-A01",
+    "EV-A02",
+    "EV-A03",
+    "EV-A05",
+    "EV-A06",
+    "EV-S02",
+    "EV-S03",
+    "EV-S04",
+    "EV-S05",
+    "EV-D01",
+    "EV-D02",
+    "E08",
+    "EV-D04",
+    "EV-D05",
+    "EV-D06",
+    "EV-C01",
+    "EV-C02",
+    "EV-C03",
+    "EV-C04",
+    "EV-C06"
+  ],
+  "scored_subset_rule": "expected_response_mode in {ANSWER, ASK_CONTEXT} AND at least one expected chunk physically present in the vector database. Control-only evaluations (ABSTAIN / ESCALATE / REFUSE) are scored by control accuracy, not by Hit@k, because their gold chunks are CONTROL/CONFLICT/BLOCKED records that are deliberately outside the vector database (FV11).",
+  "per_k": {
+    "1": {
+      "n_scored": 20,
+      "hit_at_k": 0.65,
+      "recall_at_k": 0.3225,
+      "precision_at_k": 0.65,
+      "mrr_at_k": 0.65,
+      "source_accuracy": 0.8,
+      "avg_context_chunks": 1.0,
+      "avg_context_chars": 273.9,
+      "avg_context_tokens_est": 68.5,
+      "avg_irrelevant_chunks": 0.35,
+      "latency": {
+        "mean_ms": 0.6577,
+        "median_ms": 0.515,
+        "p95_ms": 1.618,
+        "max_ms": 4.436
+      }
+    },
+    "3": {
+      "n_scored": 20,
+      "hit_at_k": 0.8,
+      "recall_at_k": 0.6467,
+      "precision_at_k": 0.55,
+      "mrr_at_k": 0.725,
+      "source_accuracy": 0.95,
+      "avg_context_chunks": 3.0,
+      "avg_context_chars": 835.6,
+      "avg_context_tokens_est": 208.9,
+      "avg_irrelevant_chunks": 1.35,
+      "latency": {
+        "mean_ms": 0.6192,
+        "median_ms": 0.484,
+        "p95_ms": 1.453,
+        "max_ms": 4.244
+      }
+    },
+    "5": {
+      "n_scored": 20,
+      "hit_at_k": 0.8,
+      "recall_at_k": 0.7275,
+      "precision_at_k": 0.3975,
+      "mrr_at_k": 0.725,
+      "source_accuracy": 0.95,
+      "avg_context_chunks": 4.95,
+      "avg_context_chars": 1378.5,
+      "avg_context_tokens_est": 344.6,
+      "avg_irrelevant_chunks": 3.0,
+      "latency": {
+        "mean_ms": 0.6124,
+        "median_ms": 0.4895,
+        "p95_ms": 1.291,
+        "max_ms": 4.275
+      }
+    },
+    "10": {
+      "n_scored": 20,
+      "hit_at_k": 0.95,
+      "recall_at_k": 0.9125,
+      "precision_at_k": 0.3125,
+      "mrr_at_k": 0.7439,
+      "source_accuracy": 0.95,
+      "avg_context_chunks": 8.75,
+      "avg_context_chars": 2465.4,
+      "avg_context_tokens_est": 616.4,
+      "avg_irrelevant_chunks": 6.4,
+      "latency": {
+        "mean_ms": 0.6195,
+        "median_ms": 0.486,
+        "p95_ms": 1.294,
+        "max_ms": 4.309
+      }
+    }
+  },
+  "isolation_and_control": {
+    "n_total": 36,
+    "archive_leakage_count": 0,
+    "archive_leakage_cases": [],
+    "namespace_filter_accuracy": 1.0,
+    "historical_isolation_cases": 3,
+    "historical_isolation_accuracy": 1.0,
+    "control_decision_accuracy": 1.0,
+    "guardrail_action_accuracy": 0.9722
+  },
+  "latency_all_queries_k5": {
+    "total_pipeline": {
+      "mean_ms": 0.6124,
+      "median_ms": 0.4895,
+      "p95_ms": 1.291,
+      "max_ms": 4.275
+    },
+    "ranking_only": {
+      "mean_ms": 0.129,
+      "median_ms": 0.052,
+      "p95_ms": 0.405,
+      "max_ms": 0.562
+    },
+    "control_only": {
+      "mean_ms": 0.2878,
+      "median_ms": 0.182,
+      "p95_ms": 0.439,
+      "max_ms": 3.41
+    },
+    "metadata_filter_only": {
+      "mean_ms": 0.1954,
+      "median_ms": 0.2145,
+      "p95_ms": 0.448,
+      "max_ms": 0.882
+    }
+  }
+}

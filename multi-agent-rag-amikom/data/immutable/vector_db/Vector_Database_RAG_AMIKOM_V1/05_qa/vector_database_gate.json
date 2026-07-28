@@ -1,0 +1,35 @@
+{
+  "decided_at_wib": "2026-07-27T12:19:34.647+07:00",
+  "scope_status": "FROZEN",
+  "embedding_gate": "PASS",
+  "database_type": "FAISS IndexIDMap2(IndexFlatIP) + SQLite metadata store",
+  "indexed_vector": 306,
+  "expected_vector": 306,
+  "vector_dimension": 384,
+  "vector_database_status": "COMPLETE",
+  "vector_database_gate": "PASS",
+  "ready_for_retrieval_testing": "YES",
+  "retrieval_testing_executed": "NO",
+  "baseline_rag_executed": "NO",
+  "generation_test_executed": "NO",
+  "ready_for_multi_agent": "NO",
+  "qa_pass": 18,
+  "qa_fail": 0,
+  "smoke_test_pass": 7,
+  "smoke_test_fail": 0,
+  "reload_status": "PASS",
+  "namespace_distribution": {
+    "active_academic": 243,
+    "active_administration": 25,
+    "active_dynamic_schedule": 10,
+    "active_schedule": 3,
+    "archive_schedule": 25
+  },
+  "accepted_blockers_unchanged": {
+    "G01": "PARTIALLY_RESOLVED_ACCEPTED_BLOCKER",
+    "G02": "OPEN_ACCEPTED_BLOCKER",
+    "G04": "PARTIALLY_RESOLVED",
+    "CF002": "OPEN_ACCEPTED_BLOCKER",
+    "MR-A11-RELATIONS": "NEEDS_MANUAL_REVIEW"
+  }
+}

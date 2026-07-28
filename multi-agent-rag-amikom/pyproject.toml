@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multi-agent-rag-amikom"
+version = "1.0.0"
+description = "Sistem Layanan Akademik Terpadu Mahasiswa S1 Informatika Universitas AMIKOM Yogyakarta"
+authors = [{ name = "Tim UAS Data Mining AMIKOM" }]
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

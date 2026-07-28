@@ -1,0 +1,86 @@
+{
+ "validated_at_wib": "2026-07-27T14:11:49.188579+07:00",
+ "stage": "BASELINE_RAG_RETRIEVAL_TESTING",
+ "input_hash_checks": [
+  {
+   "artifact": "Vector_Database_RAG_AMIKOM_V1.zip",
+   "expected_sha256": "ad8b484ca322f20e82993d9a90b18df6e69c9aa968c4e03b2440d1828862bade",
+   "actual_sha256": "ad8b484ca322f20e82993d9a90b18df6e69c9aa968c4e03b2440d1828862bade",
+   "status": "PASS"
+  },
+  {
+   "artifact": "Manifest_Vector_Database_RAG_AMIKOM_V1.xlsx",
+   "expected_sha256": "8df802a0dd3c657c453a31cd566c1f9e07e4cb428fd4032fe97f578c40c0bc85",
+   "actual_sha256": "8df802a0dd3c657c453a31cd566c1f9e07e4cb428fd4032fe97f578c40c0bc85",
+   "status": "PASS"
+  },
+  {
+   "artifact": "Laporan_Vector_Database_Indexing_RAG_AMIKOM_V1.pdf",
+   "expected_sha256": "dc2d95441baa2a8b96fa6c55899b56acc8a5b62f5c3d5b3e394a73bcb86d061f",
+   "actual_sha256": "dc2d95441baa2a8b96fa6c55899b56acc8a5b62f5c3d5b3e394a73bcb86d061f",
+   "status": "PASS"
+  },
+  {
+   "artifact": "README_Vector_Database_RAG_AMIKOM_V1.md",
+   "expected_sha256": "15645935434cd8f7f7083635c484310baee4ad4692b0ca915e094b21eea750df",
+   "actual_sha256": "15645935434cd8f7f7083635c484310baee4ad4692b0ca915e094b21eea750df",
+   "status": "PASS"
+  },
+  {
+   "artifact": "Vector_Database_Config_RAG_AMIKOM_V1.json",
+   "expected_sha256": "5c5f324032831d4a6d6b3f1ba47925850a4121e8e53000e4177dcecc60bb4a13",
+   "actual_sha256": "5c5f324032831d4a6d6b3f1ba47925850a4121e8e53000e4177dcecc60bb4a13",
+   "status": "PASS"
+  },
+  {
+   "artifact": "Chunk_Corpus_RAG_AMIKOM_V1.jsonl",
+   "expected_sha256": "9bc4147b2872db0dba4ff46b0d1050662f61975b672555212ddabdf5b68e174e",
+   "actual_sha256": "9bc4147b2872db0dba4ff46b0d1050662f61975b672555212ddabdf5b68e174e",
+   "status": "PASS"
+  }
+ ],
+ "input_hash_status": "PASS",
+ "faiss": {
+  "ntotal": 306,
+  "dimension": 384,
+  "index_class": "IndexIDMap2",
+  "file_sha256": "e7d83504bfbbc131049896f66921f4b00535dd22b0c0c74cfdf25811ac69f4b7",
+  "file_sha256_matches_previous_stage": true
+ },
+ "sqlite": {
+  "record_count": 306,
+  "vector_index_range": [
+   0,
+   305
+  ],
+  "file_sha256": "0d1ee79ec95d0341a448218681d95b04f85a5cb61ac5942611f194592c6b4b4d",
+  "file_sha256_matches_previous_stage": true
+ },
+ "faiss_functional_smoke_test": {
+  "method": "reconstruct(vector_index=0) then search(k=3) on the same index",
+  "reconstructed_norm": 1.0,
+  "self_match_index": 0,
+  "self_match_score": 1.0,
+  "top3_indexes": [
+   0,
+   4,
+   24
+  ],
+  "top3_scores": [
+   1.0,
+   0.884302,
+   0.872874
+  ],
+  "status": "PASS",
+  "note": "Proves the index is functional and cosine-normalised. It does NOT prove query-side retrieval, which needs the mandated E5 encoder."
+ },
+ "query_encoder": {
+  "mandated_model": "Xenova/multilingual-e5-small",
+  "mandated_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "status": "NOT_EXECUTED",
+  "reason": "huggingface.co blocked by the execution sandbox proxy (403); model artefacts are not bundled in any immutable input package.",
+  "query_vectors_produced": 0
+ },
+ "vector_database_gate_previous_stage": "PASS",
+ "artifacts_unmodified": true
+}

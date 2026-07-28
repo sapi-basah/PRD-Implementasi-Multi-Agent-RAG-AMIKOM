@@ -1,0 +1,76 @@
+{
+  "package_name": "Vector_Database_RAG_AMIKOM_V1",
+  "database_name": "rag_amikom_v1",
+  "database_type": "FAISS IndexIDMap2(IndexFlatIP) + SQLite metadata store",
+  "faiss_library_version": "1.14.3",
+  "sqlite_library_version": "3.50.4",
+  "persistence_path": "01_database/",
+  "faiss_index_file": "01_database/faiss.index",
+  "metadata_database_file": "01_database/metadata.sqlite",
+  "distance_metric": "cosine_via_normalized_inner_product",
+  "index_type": "IndexIDMap2(IndexFlatIP)",
+  "embedding_dimension": 384,
+  "embedding_dtype": "float32",
+  "input_vectors_normalized_l2": true,
+  "faiss_metric": "METRIC_INNER_PRODUCT",
+  "vector_id_strategy": "Reuse stable vector_id from Embedding Corpus V1.",
+  "faiss_id_strategy": "Use vector_index 0-305 as deterministic int64 ID.",
+  "canonical_order": "Embedding metadata vector_index order 0-305.",
+  "batch_size": 32,
+  "expected_vectors": 306,
+  "namespace_strategy": "Single physical FAISS index; namespace/lifecycle isolated by indexed SQLite metadata filters.",
+  "namespaces": [
+    "active_academic",
+    "active_schedule",
+    "active_administration",
+    "active_dynamic_schedule",
+    "archive_schedule"
+  ],
+  "source_model_name": "Xenova/multilingual-e5-small",
+  "source_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "scope_status": "FROZEN",
+  "embedding_gate": "PASS",
+  "stage_boundary": {
+    "retrieval_testing": "NOT_EXECUTED",
+    "top_k_final": "NOT_DETERMINED",
+    "baseline_rag": "NOT_EXECUTED",
+    "generation_test": "NOT_EXECUTED",
+    "multi_agent": "NOT_EXECUTED"
+  },
+  "accepted_blockers_unchanged": [
+    "G01",
+    "G02",
+    "G04",
+    "CF002",
+    "MR-A11-RELATIONS"
+  ],
+  "input_files": {
+    "Embedding_Corpus_RAG_AMIKOM_V1.zip": {
+      "size_bytes": 1330562,
+      "sha256": "f72a7d7f81c24099de4c039bcd44611a12f00bd2c23675e00b3d97a7276e472d"
+    },
+    "Manifest_Embedding_RAG_AMIKOM_V1.xlsx": {
+      "size_bytes": 152329,
+      "sha256": "e5973f317d1c4d356d65bd7689bda6cde104e41b26a00b6fdf391eeee3edd8a6"
+    },
+    "Embedding_Config_RAG_AMIKOM_V1.json": {
+      "size_bytes": 3121,
+      "sha256": "df0b999d321321c94daa210fb3316ba0465e744dbde37d24a882125b1a8e3ede"
+    },
+    "Laporan_Embedding_RAG_AMIKOM_V1.pdf": {
+      "size_bytes": 97065,
+      "sha256": "d2eb580cf6272e8fc39d84af0794a8589f705d9fca9359bb2973da8d70edc4c9"
+    },
+    "README_Embedding_RAG_AMIKOM_V1.md": {
+      "size_bytes": 3650,
+      "sha256": "ff3d1ba5f4afc7b133f2680574f87ced62b6491343be526ac4c1283146f8b0a2"
+    },
+    "Chunk_Corpus_RAG_AMIKOM_V1.jsonl": {
+      "size_bytes": 1093843,
+      "sha256": "9bc4147b2872db0dba4ff46b0d1050662f61975b672555212ddabdf5b68e174e"
+    }
+  },
+  "created_at_wib": "2026-07-27T12:18:55.955+07:00",
+  "config_hash_algorithm": "SHA-256",
+  "config_hash": "9c742bb4917a97de92e3341e772ac9a06d6984a6c33e9f0456adc5b8b669245c"
+}

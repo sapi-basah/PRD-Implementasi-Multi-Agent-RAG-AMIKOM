@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "database_status": {
+    "decided_at_wib": "2026-07-27T12:19:34.647+07:00",
+    "scope_status": "FROZEN",
+    "embedding_gate": "PASS",
+    "database_type": "FAISS IndexIDMap2(IndexFlatIP) + SQLite metadata store",
+    "indexed_vector": 306,
+    "expected_vector": 306,
+    "vector_dimension": 384,
+    "vector_database_status": "COMPLETE",
+    "vector_database_gate": "PASS",
+    "ready_for_retrieval_testing": "YES",
+    "retrieval_testing_executed": "NO",
+    "baseline_rag_executed": "NO",
+    "generation_test_executed": "NO",
+    "ready_for_multi_agent": "NO",
+    "qa_pass": 18,
+    "qa_fail": 0,
+    "smoke_test_pass": 7,
+    "smoke_test_fail": 0,
+    "reload_status": "PASS",
+    "namespace_distribution": {
+      "active_academic": 243,
+      "active_administration": 25,
+      "active_dynamic_schedule": 10,
+      "active_schedule": 3,
+      "archive_schedule": 25
+    },
+    "accepted_blockers_unchanged": {
+      "G01": "PARTIALLY_RESOLVED_ACCEPTED_BLOCKER",
+      "G02": "OPEN_ACCEPTED_BLOCKER",
+      "G04": "PARTIALLY_RESOLVED",
+      "CF002": "OPEN_ACCEPTED_BLOCKER",
+      "MR-A11-RELATIONS": "NEEDS_MANUAL_REVIEW"
+    }
+  },
+  "config_hash": "9c742bb4917a97de92e3341e772ac9a06d6984a6c33e9f0456adc5b8b669245c",
+  "faiss_index_sha256": "e7d83504bfbbc131049896f66921f4b00535dd22b0c0c74cfdf25811ac69f4b7",
+  "metadata_sqlite_sha256": "0d1ee79ec95d0341a448218681d95b04f85a5cb61ac5942611f194592c6b4b4d",
+  "indexed_records_jsonl_sha256": "2207b6283755b35b10e9b40e0b5637d15eb4c26cc4960aa0ace1863ba6e199a5",
+  "checkpoint_count": 10,
+  "qa_count": 18,
+  "smoke_test_count": 7,
+  "recovery_actions": []
+}

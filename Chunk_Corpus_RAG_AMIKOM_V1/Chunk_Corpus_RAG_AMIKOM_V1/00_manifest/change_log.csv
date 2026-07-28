@@ -1,0 +1,2 @@
+change_id,changed_at_wib,previous_status,new_status,basis,unchanged_controls,approved_by,approval_at_wib
+CHG-CHUNKING-V1,2026-07-26T09:25:38+07:00,Clean Corpus Gate=PASS; Ready for Chunking=YES; Ready for Embedding=NO,Chunking Status=COMPLETE; Chunk Corpus Gate=PASS; Ready for Embedding=YES; Embedding Executed=NO,"Clean Corpus V1 transformed into deterministic chunks with metadata, locator, hashes, lifecycle isolation, QA, manual sample review, and evaluation coverage.",G01|G02|G04|CF002|MR-A11-RELATIONS,Mikhail Satria,2026-07-26T04:01:00+07:00

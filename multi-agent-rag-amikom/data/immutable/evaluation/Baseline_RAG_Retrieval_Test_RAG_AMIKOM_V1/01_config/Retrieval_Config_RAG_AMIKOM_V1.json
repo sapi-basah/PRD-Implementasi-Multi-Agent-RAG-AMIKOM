@@ -1,0 +1,181 @@
+{
+  "package_name": "Baseline_RAG_Retrieval_Test_RAG_AMIKOM_V1",
+  "stage": "BASELINE_RAG_AND_RETRIEVAL_TESTING",
+  "created_at_wib": "2026-07-27T14:12:49.642176+07:00",
+  "scope_status": "FROZEN",
+  "vector_database_gate": "PASS",
+  "retrieval_testing": "PARTIALLY_COMPLETE",
+  "baseline_rag": "COMPLETE",
+  "baseline_top_k": 5,
+  "top_k_candidates_tested": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "query_encoder": {
+    "mandated_model_name": "Xenova/multilingual-e5-small",
+    "mandated_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "mandated_tokenizer": "XLMRobertaTokenizer - Xenova/multilingual-e5-small",
+    "query_prefix": "query: ",
+    "document_prefix_never_used_for_questions": "passage: ",
+    "pooling_strategy": "mean",
+    "normalize_embeddings": true,
+    "embedding_dimension": 384,
+    "embedding_dtype": "float32",
+    "execution_status": "NOT_EXECUTED",
+    "block_reason": "huggingface.co blocked by the execution sandbox proxy (403); model artefacts are not bundled in any immutable input package.",
+    "query_vectors_produced": 0
+  },
+  "retriever_backend": {
+    "backend_id": "FALLBACK_LEXICAL_BM25_V1",
+    "algorithm": "BM25 Okapi",
+    "k1": 1.5,
+    "b": 0.75,
+    "indexed_fields": [
+      "title",
+      "chunk_text"
+    ],
+    "tokenizer": "lowercase + [a-z0-9]+ regex + Indonesian stopword list",
+    "idf_corpus": "all 306 indexed records (static corpus statistic)",
+    "scoring_scope": "SQLite candidate set only (filter before ranking)",
+    "deterministic": true,
+    "rationale": "Substitute retriever so that control, filter, metric and generation layers can be exercised while the mandated E5 encoder is unavailable. Scores are NOT cosine similarities."
+  },
+  "vector_database": {
+    "faiss_index": "01_database/faiss.index",
+    "metadata_sqlite": "01_database/metadata.sqlite",
+    "faiss_ntotal": 306,
+    "dimension": 384,
+    "sqlite_records": 306,
+    "opened_read_only": true,
+    "functional_smoke_test": "PASS",
+    "vector_search_executed_for_queries": false
+  },
+  "metadata_filter": {
+    "order": "control_check -> metadata_filter -> ranking -> top_k",
+    "current_predicate": "active_retrieval_allowed=1 AND historical_only=0 AND retrieval_namespace IN (routed active namespaces)",
+    "historical_predicate": "historical_only=1 AND lifecycle_status='ARCHIVE' AND retrieval_namespace='archive_schedule'",
+    "active_namespaces": [
+      "active_academic",
+      "active_schedule",
+      "active_administration",
+      "active_dynamic_schedule"
+    ],
+    "archive_namespace": "archive_schedule",
+    "global_topk_then_discard": false
+  },
+  "control_layer": {
+    "source": "Chunk_Corpus_RAG_AMIKOM_V1 CONTROL/CONFLICT/BLOCKED records only",
+    "records_loaded": {
+      "CONTROL": 10,
+      "CONFLICT": 2,
+      "BLOCKED": 1
+    },
+    "controls_enforced": [
+      "INT01",
+      "INT02",
+      "INT03",
+      "INT04",
+      "INT05",
+      "INT06",
+      "INT07",
+      "G01",
+      "G02",
+      "CF001",
+      "CF002",
+      "MR-A11-RELATIONS"
+    ],
+    "control_as_vector_knowledge": false
+  },
+  "freshness_policy": {
+    "evaluation_time_wib": "2026-07-27T14:12:49.642176+07:00",
+    "active_dynamic_ttl_days": 1,
+    "active_dynamic_snapshot_at_wib": "2026-07-24T23:50:04+07:00",
+    "verdict": "EXPIRED -> response_mode LIVE_CHECK_OR_ABSTAIN"
+  },
+  "generator": {
+    "type": "single generator LLM (no multi-agent, no coordinator, no verifier)",
+    "model": "claude-opus-5",
+    "prompt_contract": [
+      "answer only from retrieved context",
+      "no added facts",
+      "cite source_id and locator",
+      "say not found when context is insufficient",
+      "obey ABSTAIN / ESCALATE / HANDOFF / ASK_CONTEXT / REFUSE / LIVE_CHECK",
+      "never accept or repeat PII",
+      "never use ARCHIVE for a current question"
+    ],
+    "context_fields": [
+      "chunk_text",
+      "title",
+      "source_id",
+      "locator",
+      "lifecycle",
+      "freshness"
+    ]
+  },
+  "evaluation_set": {
+    "core": 30,
+    "supplementary": 6,
+    "source": "Chunk_Corpus_RAG_AMIKOM_V1/00_manifest/evaluation_chunk_coverage.csv",
+    "retrieval_scored_subset": [
+      "EV-A01",
+      "EV-A02",
+      "EV-A03",
+      "EV-A05",
+      "EV-A06",
+      "EV-S02",
+      "EV-S03",
+      "EV-S04",
+      "EV-S05",
+      "EV-D01",
+      "EV-D02",
+      "E08",
+      "EV-D04",
+      "EV-D05",
+      "EV-D06",
+      "EV-C01",
+      "EV-C02",
+      "EV-C03",
+      "EV-C04",
+      "EV-C06"
+    ],
+    "retrieval_scored_subset_rule": "expected_response_mode in {ANSWER, ASK_CONTEXT} AND at least one expected chunk physically present in the vector database. Control-only evaluations (ABSTAIN / ESCALATE / REFUSE) are scored by control accuracy, not by Hit@k, because their gold chunks are CONTROL/CONFLICT/BLOCKED records that are deliberately outside the vector database (FV11)."
+  },
+  "accepted_blockers_unchanged": [
+    "G01",
+    "G02",
+    "G04",
+    "CF002",
+    "MR-A11-RELATIONS"
+  ],
+  "stage_boundary": {
+    "multi_agent": "NOT_EXECUTED",
+    "coordinator_agent_final": "NOT_EXECUTED",
+    "application_interface": "NOT_EXECUTED",
+    "deployment": "NOT_EXECUTED",
+    "fine_tuning": "NOT_EXECUTED"
+  },
+  "gates": {
+    "retrieval_gate": "CONDITIONAL_PASS",
+    "baseline_rag_gate": "CONDITIONAL_PASS",
+    "ready_for_multi_agent": "NO"
+  },
+  "input_artifacts_sha256": {
+    "Vector_Database_RAG_AMIKOM_V1.zip": "ad8b484ca322f20e82993d9a90b18df6e69c9aa968c4e03b2440d1828862bade",
+    "Manifest_Vector_Database_RAG_AMIKOM_V1.xlsx": "8df802a0dd3c657c453a31cd566c1f9e07e4cb428fd4032fe97f578c40c0bc85",
+    "Laporan_Vector_Database_Indexing_RAG_AMIKOM_V1.pdf": "dc2d95441baa2a8b96fa6c55899b56acc8a5b62f5c3d5b3e394a73bcb86d061f",
+    "README_Vector_Database_RAG_AMIKOM_V1.md": "15645935434cd8f7f7083635c484310baee4ad4692b0ca915e094b21eea750df",
+    "Vector_Database_Config_RAG_AMIKOM_V1.json": "5c5f324032831d4a6d6b3f1ba47925850a4121e8e53000e4177dcecc60bb4a13",
+    "Chunk_Corpus_RAG_AMIKOM_V1.jsonl": "9bc4147b2872db0dba4ff46b0d1050662f61975b672555212ddabdf5b68e174e"
+  },
+  "environment": {
+    "python_version": "Python 3.11.15",
+    "faiss_version": "1.14.3",
+    "sqlite_version": "3.45.1",
+    "platform": "Linux cloud sandbox (network-restricted)"
+  },
+  "config_hash_algorithm": "SHA-256",
+  "config_hash": "f3c494d1432d276b06a33816461d53f1af7c9ff2cfa125e4a6904ce36e6b87f1"
+}

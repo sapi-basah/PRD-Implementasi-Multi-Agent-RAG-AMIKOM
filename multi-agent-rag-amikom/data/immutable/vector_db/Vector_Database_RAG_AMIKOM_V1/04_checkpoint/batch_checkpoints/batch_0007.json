@@ -1,0 +1,26 @@
+{
+  "checkpoint_id": "CP-VDB-V1-0007",
+  "batch_number": 7,
+  "first_vector_index": 192,
+  "last_vector_index": 223,
+  "first_vector_id": "VEC-E5S-CH-ACA-A11-DOC-A11-COURSE_NODE-0062",
+  "last_vector_id": "VEC-E5S-CH-ACA-A12-DOC-A12-EQUIVALENCY_ROW-0026",
+  "processed_count": 32,
+  "successful_count": 32,
+  "failed_count": 0,
+  "vector_shape": [
+    32,
+    384
+  ],
+  "database_name": "rag_amikom_v1",
+  "database_type": "FAISS IndexIDMap2(IndexFlatIP) + SQLite metadata store",
+  "index_type": "IndexIDMap2(IndexFlatIP)",
+  "config_hash": "9c742bb4917a97de92e3341e772ac9a06d6984a6c33e9f0456adc5b8b669245c",
+  "batch_content_hash": "eb9abc31d0519d98d2046cb76facb296b5b8350ee73062bde00b6c8e115b4b3f",
+  "output_file": "04_checkpoint/batch_checkpoints/batch_0007_vectors.npy",
+  "output_hash": "0fa76b647117bfb6ffdb90f5ab343b29d0675a2de93b36264bd77715c3ca8128",
+  "started_at_wib": "2026-07-27T12:18:55.998+07:00",
+  "completed_at_wib": "2026-07-27T12:18:56.001+07:00",
+  "duration_seconds": 0.003624,
+  "status": "COMPLETE"
+}

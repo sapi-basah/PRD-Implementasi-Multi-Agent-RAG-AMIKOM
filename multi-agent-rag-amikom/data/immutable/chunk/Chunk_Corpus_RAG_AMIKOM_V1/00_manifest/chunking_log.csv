@@ -1,0 +1,10 @@
+step_id,status,timestamp_wib,action,evidence
+CHUNK-01,PASS,2026-07-26T09:25:38+07:00,Read authority and chunking input files.,12 files registered; all READ_OK.
+CHUNK-02,PASS,2026-07-26T09:25:38+07:00,"Validate clean ZIP, paths, and hashes.",28/28 clean paths exist and hashes match manifest.
+CHUNK-03,PASS,2026-07-26T09:25:38+07:00,Select reference tokenizer.,unicode_codepoint_v1; Unicode 15.0.0; Python stdlib unicodedata; NFC normalization
+CHUNK-04,PASS,2026-07-26T09:25:38+07:00,"Create source-preserving, section-aware chunks.",319 total chunks.
+CHUNK-05,PASS,2026-07-26T09:25:38+07:00,Isolate lifecycle namespaces.,"ACTIVE, ACTIVE_DYNAMIC, ARCHIVE, CONFLICT, BLOCKED, CONTROL separated."
+CHUNK-06,PASS,2026-07-26T09:25:38+07:00,Map evaluation cases.,30 CORE covered; 6 SUPPLEMENTARY OUT_OF_SCOPE.
+CHUNK-07,PASS,2026-07-26T09:25:38+07:00,Review deterministic sample.,32 samples; all PASS.
+CHUNK-08,PASS,2026-07-26T09:25:38+07:00,Run Q01–Q25.,25/25 PASS.
+CHUNK-09,NOT_EXECUTED,2026-07-26T09:25:38+07:00,Embedding/vector/retrieval/multi-agent.,Explicitly outside this stage.

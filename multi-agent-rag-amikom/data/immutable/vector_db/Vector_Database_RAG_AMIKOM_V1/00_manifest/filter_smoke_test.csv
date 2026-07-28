@@ -1,0 +1,8 @@
+﻿test_id,test_name,sql_filter,expected_count,actual_count,status,evidence
+SMK-01,Lookup exact record by vector_id,SELECT vector_id FROM vector_records WHERE vector_id=?,1,1,PASS,Resolved VEC-E5S-CH-ACA-A01-DOC-A01-ACADEMIC-POLICY-0001; no similarity search executed.
+SMK-02,Filter namespace active_academic,SELECT vector_id FROM vector_records WHERE retrieval_namespace=?,243,243,PASS,Namespace metadata index returned the expected count.
+SMK-03,Filter lifecycle ARCHIVE,SELECT vector_id FROM vector_records WHERE lifecycle_status=?,25,25,PASS,Historical lifecycle filter returned only archive records.
+SMK-04,Current filter excludes archive,SELECT vector_id FROM vector_records WHERE active_retrieval_allowed=1 AND historical_only=0,281,281,PASS,Current filter contains ACTIVE and ACTIVE_DYNAMIC only.
+SMK-05,Current filter contains zero archive,SELECT vector_id FROM vector_records WHERE active_retrieval_allowed=1 AND lifecycle_status='ARCHIVE',0,0,PASS,Archive isolation confirmed.
+SMK-06,ACTIVE_DYNAMIC control filter,"SELECT vector_id FROM vector_records WHERE lifecycle_status='ACTIVE_DYNAMIC' AND ttl_days=1 AND live_check_required=1 AND snapshot_at_wib NOT IN ('','NOT_AVAILABLE','NOT_APPLICABLE')",10,10,PASS,"All dynamic records retain TTL, live-check, and snapshot."
+SMK-07,Filter namespace active_schedule,SELECT vector_id FROM vector_records WHERE retrieval_namespace=?,3,3,PASS,Schedule namespace count matches the frozen manifest.

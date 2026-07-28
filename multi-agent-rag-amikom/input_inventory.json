@@ -1,0 +1,50 @@
+{
+  "files": {
+    "Vector_Database_RAG_AMIKOM_V1.zip": {
+      "exists": true,
+      "size_bytes": 1272705,
+      "sha256": "ad8b484ca322f20e82993d9a90b18df6e69c9aa968c4e03b2440d1828862bade"
+    },
+    "Chunk_Corpus_RAG_AMIKOM_V1.zip": {
+      "exists": true,
+      "size_bytes": 679438,
+      "sha256": "6812a47038df4e11386b8f3fbdf6ec96dd517efd2ad1ee50a0b1bb87f2b79589"
+    },
+    "Baseline_RAG_Retrieval_Test_RAG_AMIKOM_V1.zip": {
+      "exists": true,
+      "size_bytes": 212862,
+      "sha256": "60d2208d6f007be1964a4526d955e77d36f7e54a888ce4e5b7193ad639685ac3"
+    },
+    "Embedding_Config_RAG_AMIKOM_V1.json": {
+      "exists": true,
+      "size_bytes": 3121,
+      "sha256": "df0b999d321321c94daa210fb3316ba0465e744dbde37d24a882125b1a8e3ede"
+    },
+    "Vector_Database_Config_RAG_AMIKOM_V1.json": {
+      "exists": true,
+      "size_bytes": 2851,
+      "sha256": "5c5f324032831d4a6d6b3f1ba47925850a4121e8e53000e4177dcecc60bb4a13"
+    },
+    "final_package_validation.json": {
+      "exists": true,
+      "size_bytes": 10995,
+      "sha256": "3063e2148de2aa251359576885a8cd9271d632c110b84a3e1d91bb59b6cb02ad"
+    },
+    "PRD_Multi_Agent_RAG_AMIKOM_Antigravity.md": {
+      "exists": true,
+      "size_bytes": 21653,
+      "sha256": "a481d5db89d38b83da35325ad745ee6cde4d4245c6324bbfff3039f847361206"
+    },
+    "Retrieval_Recovery_Prompt.md": {
+      "exists": true,
+      "size_bytes": 5642,
+      "sha256": "e9694c042a68edb2557d482c7a8409ff05eca19d0ece80bf6f1161cc52efac78"
+    },
+    "Inventaris_Sumber_RAG_AMIKOM_V2_Pasca_Scope_Freeze.xlsx": {
+      "exists": true,
+      "size_bytes": 63113,
+      "sha256": "a4713a1875cc02e35de39c9ded1c84dafbac200c3c0c61735a2524be117cadcb"
+    }
+  },
+  "status": "PASS"
+}
