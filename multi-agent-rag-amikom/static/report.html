@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Artifact Search Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: rgba(30, 41, 59, 0.7);
+            --surface-border: rgba(255, 255, 255, 0.1);
+            --primary-color: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.5);
+            --danger-color: #ef4444;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .glass-card {
+            background: var(--surface-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--surface-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 15px var(--primary-glow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--surface-border);
+            padding-bottom: 1rem;
+        }
+
+        .card-header i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .data-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .data-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .data-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .data-value.mono {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            background: rgba(0,0,0,0.3);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            word-break: break-all;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-danger { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .badge-success { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-warning { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            font-size: 0.95rem;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-left: 4px solid var(--danger-color);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            gap: 1rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Model Artifact Search Report</h1>
+            <p class="subtitle" id="report-date">Loading report data...</p>
+        </header>
+
+        <div id="loading" class="loading-state">
+            <div class="spinner"></div>
+            <p>Fetching latest search data...</p>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <!-- Overview Card -->
+            <div class="glass-card" style="animation-delay: 0.1s;">
+                <div class="card-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h2>Overview</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="data-item">
+                        <span class="data-label">Decision</span>
+                        <div id="overview-decision"></div>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Model Name</span>
+                        <span class="data-value" id="overview-model"></span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Revision</span>
+                        <span class="data-value mono" id="overview-revision"></span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Searched At</span>
+                        <span class="data-value" id="overview-time"></span>
+                    </div>
+                </div>
+                <div id="conclusion-container"></div>
+            </div>
+
+            <!-- Prior Verified Use -->
+            <div class="glass-card" style="animation-delay: 0.2s;">
+                <div class="card-header">
+                    <i class="fas fa-history"></i>
+                    <h2>Prior Verified Use</h2>
+                </div>
+                <div class="grid-2" id="prior-use-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Artifacts Status -->
+            <div class="glass-card" style="animation-delay: 0.3s;">
+                <div class="card-header">
+                    <i class="fas fa-file-alt"></i>
+                    <h2>Target Artifacts</h2>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Filename</th>
+                                <th>Expected Size</th>
+                                <th>Physical File</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="artifacts-table">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Locations Checked -->
+            <div class="glass-card" style="animation-delay: 0.4s;">
+                <div class="card-header">
+                    <i class="fas fa-search-location"></i>
+                    <h2>Locations Checked</h2>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Location Path</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody id="locations-table">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Outputs Not Created -->
+            <div class="glass-card" style="animation-delay: 0.5s;">
+                <div class="card-header">
+                    <i class="fas fa-ban"></i>
+                    <h2>Outputs Not Created</h2>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Output Name</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody id="outputs-table">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Fetch the JSON data
+                const response = await fetch('model_artifact_search_report.json');
+                const data = await response.json();
+                
+                // Hide loading, show dashboard
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+
+                // Populate Overview
+                document.getElementById('report-date').textContent = `Report Version: ${data.report_version}`;
+                document.getElementById('overview-model').textContent = data.model_name;
+                document.getElementById('overview-revision').textContent = data.model_revision;
+                document.getElementById('overview-time').textContent = new Date(data.searched_at_wib).toLocaleString();
+                
+                const decisionEl = document.getElementById('overview-decision');
+                if(data.decision === 'CACHE_PURGED') {
+                    decisionEl.innerHTML = `<span class="badge badge-danger"><i class="fas fa-trash-alt" style="margin-right:5px"></i> ${data.decision}</span>`;
+                } else {
+                    decisionEl.innerHTML = `<span class="badge badge-success">${data.decision}</span>`;
+                }
+
+                document.getElementById('conclusion-container').innerHTML = `
+                    <div class="conclusion-box">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 10px; color: var(--warning-color);"></i>
+                        ${data.conclusion}
+                    </div>
+                `;
+
+                // Populate Prior Use
+                const priorGrid = document.getElementById('prior-use-grid');
+                if(data.prior_verified_use) {
+                    for(const [key, value] of Object.entries(data.prior_verified_use)) {
+                        const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        priorGrid.innerHTML += `
+                            <div class="data-item">
+                                <span class="data-label">${formattedKey}</span>
+                                <span class="data-value">${value}</span>
+                            </div>
+                        `;
+                    }
+                }
+
+                // Populate Artifacts
+                const artifactsTable = document.getElementById('artifacts-table');
+                if(data.artifacts) {
+                    data.artifacts.forEach(art => {
+                        const fileFound = art.current_physical_file_found 
+                            ? '<span style="color: var(--success-color)"><i class="fas fa-check"></i> Found</span>' 
+                            : '<span style="color: var(--danger-color)"><i class="fas fa-times"></i> Missing</span>';
+                        
+                        artifactsTable.innerHTML += `
+                            <tr>
+                                <td class="mono">${art.filename}</td>
+                                <td>${(art.expected_size_bytes / 1024 / 1024).toFixed(2)} MB</td>
+                                <td>${fileFound}</td>
+                                <td><span class="badge badge-warning">${art.verification_status}</span></td>
+                            </tr>
+                        `;
+                    });
+                }
+
+                // Populate Locations
+                const locationsTable = document.getElementById('locations-table');
+                if(data.locations_checked) {
+                    data.locations_checked.forEach(loc => {
+                        let resultColor = 'var(--text-secondary)';
+                        if(loc.result.includes('ABSENT')) resultColor = 'var(--danger-color)';
+                        
+                        locationsTable.innerHTML += `
+                            <tr>
+                                <td class="mono">${loc.location}</td>
+                                <td style="color: ${resultColor}">${loc.result}</td>
+                            </tr>
+                        `;
+                    });
+                }
+                
+                // Populate Outputs Not Created
+                const outputsTable = document.getElementById('outputs-table');
+                if(data.outputs_not_created) {
+                    data.outputs_not_created.forEach(out => {
+                        outputsTable.innerHTML += `
+                            <tr>
+                                <td class="mono">${out.name}</td>
+                                <td>${out.reason}</td>
+                            </tr>
+                        `;
+                    });
+                }
+
+            } catch (error) {
+                document.getElementById('loading').innerHTML = `
+                    <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--danger-color);"></i>
+                    <p>Failed to load data: ${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

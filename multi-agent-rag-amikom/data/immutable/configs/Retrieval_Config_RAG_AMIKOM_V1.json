@@ -1,0 +1,16 @@
+{
+  "retrieval_version": "V1",
+  "encoder_model": "Xenova/multilingual-e5-small",
+  "top_k_default": 5,
+  "top_k_max": 20,
+  "similarity_threshold": 0.75,
+  "namespaces": {
+    "academic": ["active_academic"],
+    "schedule": ["active_schedule", "active_dynamic_schedule", "archive_schedule"],
+    "administration": ["active_administration"]
+  },
+  "freshness_controls": {
+    "require_ttl_check_for_dynamic": true,
+    "fallback_to_archive_allowed": false
+  }
+}

@@ -1,7 +1,9 @@
 import time
 import uuid
 from fastapi import FastAPI, Request
-from app.api.health import router as health_router
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from app.api import health, query, evaluation
 from app.observability.logging import logger
 
 app = FastAPI(
@@ -22,8 +24,17 @@ async def audit_middleware(request: Request, call_next):
     logger.info(f"Method={request.method} Path={request.url.path} RequestID={request_id} Latency={latency_ms:.2f}ms Status={response.status_code}")
     return response
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-app.include_router(health_router)
+app.include_router(health.router)        # router already has prefix /api/v1
+app.include_router(query.router, prefix="/api")
+app.include_router(evaluation.router, prefix="/api")
 
 @app.get("/")
 def read_root():

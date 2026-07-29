@@ -1,0 +1,170 @@
+{
+  "report_version": "E5-ARTIFACT-TRACE-V1",
+  "decision": "CACHE_PURGED",
+  "model_name": "Xenova/multilingual-e5-small",
+  "model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "searched_at_wib": "2026-07-28T21:52:06+07:00",
+  "download_performed": false,
+  "embedding_rerun": false,
+  "retrieval_rerun": false,
+  "generation_rerun": false,
+  "prior_verified_use": {
+    "embedding_environment_captured_at_wib": "2026-07-27T10:49:44.191+07:00",
+    "embedding_model_cache_bytes": 135138424,
+    "query_embedding_qa_generated_at_wib": "2026-07-27T13:15:18+07:00",
+    "query_embedding_qa_status": "PASS",
+    "query_vectors": 36,
+    "dimension": 384,
+    "runtime": "@huggingface/transformers 4.2.0, onnxruntime-node 1.24.3, CPU int8"
+  },
+  "original_model_root_from_execution_log": "/workspace/scratch/cd969d402d35/tmp/retrieval_stage/model/Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "artifacts": [
+    {
+      "filename": "config.json",
+      "original_path": "/workspace/scratch/cd969d402d35/tmp/retrieval_stage/model/Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/config.json",
+      "expected_size_bytes": 658,
+      "expected_sha256": "cb99455288675345e1a4f411438d5d0adbba5fbd3a67ea4fb03c015433b996c1",
+      "current_physical_file_found": false,
+      "verification_status": "PRIOR_LOG_VERIFIED_CURRENT_CACHE_PURGED"
+    },
+    {
+      "filename": "tokenizer.json",
+      "original_path": "/workspace/scratch/cd969d402d35/tmp/retrieval_stage/model/Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/tokenizer.json",
+      "expected_size_bytes": 17082730,
+      "expected_sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+      "current_physical_file_found": false,
+      "verification_status": "PRIOR_LOG_VERIFIED_CURRENT_CACHE_PURGED"
+    },
+    {
+      "filename": "tokenizer_config.json",
+      "original_path": "/workspace/scratch/cd969d402d35/tmp/retrieval_stage/model/Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/tokenizer_config.json",
+      "expected_size_bytes": 443,
+      "expected_sha256": "a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b",
+      "current_physical_file_found": false,
+      "verification_status": "PRIOR_LOG_VERIFIED_CURRENT_CACHE_PURGED"
+    },
+    {
+      "filename": "onnx/model_int8.onnx",
+      "original_path": "/workspace/scratch/cd969d402d35/tmp/retrieval_stage/model/Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/onnx/model_int8.onnx",
+      "expected_size_bytes": 118054593,
+      "expected_sha256": "4d24e2bc01a447951524466ef533e52944bf48509e6552810bcee1a2711cb02c",
+      "current_physical_file_found": false,
+      "verification_status": "PRIOR_LOG_VERIFIED_CURRENT_CACHE_PURGED"
+    }
+  ],
+  "locations_checked": [
+    {
+      "location": "/workspace",
+      "result": "SEARCHED_NO_MODEL_ARTIFACT"
+    },
+    {
+      "location": "/workspace/scratch/cd969d402d35",
+      "result": "SEARCHED_NO_MODEL_ARTIFACT; PRIOR WORKSPACE CONTENT PRUNED"
+    },
+    {
+      "location": "/workspace/scratch/cd969d402d35/tmp/retrieval_stage/model",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/workspace/.cache",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/workspace/models",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/workspace/model",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/tmp",
+      "result": "SEARCHED_NO_MODEL_ARTIFACT"
+    },
+    {
+      "location": "/root/.cache",
+      "result": "PRESENT_BUT_ONLY_CODEX_RUNTIME_METADATA; NO_MODEL_ARTIFACT"
+    },
+    {
+      "location": "/root/.cache/huggingface/hub",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/root/.cache/huggingface",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/root/.cache/transformers",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/root/.cache/Xenova",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/root/.huggingface",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/home/oai/.cache",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/home/oai/share",
+      "result": "ABSENT"
+    },
+    {
+      "location": "/mnt, /models, /model",
+      "result": "SEARCHED_WHERE_PRESENT; NO_MATCHING_DIRECTORY_OR_FILE"
+    },
+    {
+      "location": "Embedding_Corpus_RAG_AMIKOM_V1.zip",
+      "result": "77_MEMBERS_READABLE; CONTAINS_HASH_REFERENCES_ONLY; NO_MODEL_BYTES"
+    },
+    {
+      "location": "Baseline_RAG_Retrieval_Test_RAG_AMIKOM_V1(2).zip",
+      "result": "47_MEMBERS_READABLE; CONTAINS_QUERY_EMBEDDING_QA_AND_PATH_REFERENCES_ONLY; NO_MODEL_BYTES"
+    },
+    {
+      "location": "ChatGPT Library exact-title search for config.json, tokenizer.json, tokenizer_config.json, and model_int8.onnx",
+      "result": "0_STANDALONE_MODEL_FILES"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "source": "Embedding_Corpus_RAG_AMIKOM_V1.zip/02_config/environment.json",
+      "evidence": "Recorded all four cache artifacts, sizes, hashes, and model_cache_bytes=135138424."
+    },
+    {
+      "source": "Embedding_Corpus_RAG_AMIKOM_V1.zip/06_logs/embedding_log.md",
+      "evidence": "Embedding completed with the pinned model revision."
+    },
+    {
+      "source": "Baseline_RAG_Retrieval_Test_RAG_AMIKOM_V1(2).zip/02_config/query_embedding_qa.json",
+      "evidence": "Recorded the exact absolute paths, sizes, hashes, and successful query embedding QA."
+    },
+    {
+      "source": "Workspace and cache filesystem search",
+      "evidence": "No current directory or physical file matched the model name, revision, exact filenames, or the two distinctive large-file sizes."
+    }
+  ],
+  "outputs_not_created": [
+    {
+      "name": "Xenova_multilingual-e5-small_offline/",
+      "reason": "No original physical model bytes remain."
+    },
+    {
+      "name": "Xenova_multilingual-e5-small_offline.zip",
+      "reason": "Creating an empty or synthetic model package is prohibited."
+    },
+    {
+      "name": "model_artifact_manifest.json",
+      "reason": "The requested export manifest applies only to physically found and exported artifacts."
+    },
+    {
+      "name": "Xenova_multilingual-e5-small_offline.sha256",
+      "reason": "No valid ZIP exists to hash."
+    }
+  ],
+  "conclusion": "The four artifacts demonstrably existed and were used previously, but their workspace/cache directory has been purged and no persistent copy was found. Decision: CACHE_PURGED."
+}

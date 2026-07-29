@@ -1,0 +1,16 @@
+{
+  "generator_version": "V1",
+  "baseline_model": "Qwen2.5-1.5B-Instruct",
+  "evidence_selector_version": "V2",
+  "max_input_tokens": 4096,
+  "max_output_tokens": 1024,
+  "temperature": 0.1,
+  "prompts": {
+    "system_baseline": "Anda adalah Layanan Akademik AI Universitas AMIKOM Yogyakarta. Jawablah pertanyaan HANYA berdasarkan konteks yang diberikan. Jangan membuat-buat informasi.",
+    "fallback": "Maaf, informasi tersebut tidak ditemukan dalam dokumen akademik yang tersedia. Silakan hubungi bagian administrasi untuk informasi lebih lanjut."
+  },
+  "safety_controls": {
+    "hallucination_threshold": 0.9,
+    "fallback_on_unsupported_claims": true
+  }
+}

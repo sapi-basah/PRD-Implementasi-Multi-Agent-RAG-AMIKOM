@@ -1,0 +1,76 @@
+{
+  "package_name": "Embedding_Corpus_RAG_AMIKOM_V1",
+  "embedding_version": "V1-E5S-INT8-761B726",
+  "input_file": "Chunk_Corpus_RAG_AMIKOM_V1.jsonl",
+  "input_sha256": "9bc4147b2872db0dba4ff46b0d1050662f61975b672555212ddabdf5b68e174e",
+  "expected_input_chunks": 319,
+  "expected_embedding_candidates": 306,
+  "excluded_non_embedding_chunks": 13,
+  "canonical_order": "Original Chunk_Corpus_RAG_AMIKOM_V1.jsonl order, verified equal to manifest candidate order.",
+  "model_name": "Xenova/multilingual-e5-small",
+  "model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "model_provider": "Hugging Face / Xenova ONNX conversion of intfloat multilingual E5",
+  "model_license": "MIT (base model); Apache-2.0 runtime",
+  "model_dtype": "int8",
+  "tokenizer_name": "XLMRobertaTokenizer — Xenova/multilingual-e5-small",
+  "tokenizer_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "tokenizer_official_for_model": true,
+  "document_prefix": "passage: ",
+  "pooling_strategy": "mean",
+  "normalize_embeddings": true,
+  "recommended_similarity_metric": "cosine",
+  "embedding_dimension": 384,
+  "embedding_dtype": "float32",
+  "max_model_tokens": 512,
+  "near_limit_threshold_tokens": 460,
+  "truncation_allowed": false,
+  "batch_size": 16,
+  "device": "cpu",
+  "random_seed": "NOT_APPLICABLE_DETERMINISTIC_INFERENCE",
+  "library_name": "@huggingface/transformers",
+  "library_version": "4.2.0",
+  "node_version": "v24.14.0",
+  "python_version": "Python 3.12.13",
+  "checkpoint_strategy": "One COMPLETE JSON checkpoint and one NPY vector file per deterministic batch.",
+  "output_format": "NumPy .npy, little-endian float32, C order",
+  "scope_status": "FROZEN",
+  "accepted_blockers_unchanged": [
+    "G01",
+    "G02",
+    "G04",
+    "CF002",
+    "MR-A11-RELATIONS"
+  ],
+  "stage_boundary": {
+    "vector_database": "NOT_EXECUTED",
+    "indexing": "NOT_EXECUTED",
+    "retrieval_testing": "NOT_EXECUTED",
+    "baseline_rag": "NOT_EXECUTED",
+    "multi_agent": "NOT_EXECUTED"
+  },
+  "config_hash_algorithm": "SHA-256",
+  "config_hash": "bc0fea0de9a931408c963a265e56d1c2a9288817343be67b4a9d7a091809fd72",
+  "execution_started_at_wib": "2026-07-27T10:49:44.080+07:00",
+  "model_artifacts": [
+    {
+      "file": "Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/config.json",
+      "size_bytes": 658,
+      "sha256": "cb99455288675345e1a4f411438d5d0adbba5fbd3a67ea4fb03c015433b996c1"
+    },
+    {
+      "file": "Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/tokenizer.json",
+      "size_bytes": 17082730,
+      "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39"
+    },
+    {
+      "file": "Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/tokenizer_config.json",
+      "size_bytes": 443,
+      "sha256": "a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b"
+    },
+    {
+      "file": "Xenova/multilingual-e5-small/761b726dd34fb83930e26aab4e9ac3899aa1fa78/onnx/model_int8.onnx",
+      "size_bytes": 118054593,
+      "sha256": "4d24e2bc01a447951524466ef533e52944bf48509e6552810bcee1a2711cb02c"
+    }
+  ]
+}

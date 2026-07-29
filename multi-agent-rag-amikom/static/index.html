@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Akademik AMIKOM — Multi-Agent RAG</title>
+    <meta name="description" content="Sistem Layanan Akademik Terpadu Mahasiswa S1 Informatika Universitas AMIKOM Yogyakarta">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>AMIKOM</h1>
+                        <span>Layanan Akademik AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Menu</div>
+                <a href="#" class="nav-item active" data-page="chat">
+                    <i class="fas fa-comments"></i>
+                    <span>Chat Akademik</span>
+                </a>
+                <a href="#" class="nav-item" data-page="sources">
+                    <i class="fas fa-book-open"></i>
+                    <span>Sumber Dokumen</span>
+                </a>
+                <a href="#" class="nav-item" data-page="status">
+                    <i class="fas fa-server"></i>
+                    <span>Status Sistem</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-status">
+                <div class="nav-section-label">System Status</div>
+                <div class="status-card" id="system-status-card">
+                    <div class="status-row">
+                        <span class="status-label">Readiness</span>
+                        <span class="status-badge degraded" id="status-readiness">Loading...</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">Backend</span>
+                        <span class="status-badge" id="status-backend">—</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">FAISS</span>
+                        <span class="status-indicator" id="status-faiss"><i class="fas fa-circle"></i></span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">SQLite</span>
+                        <span class="status-indicator" id="status-sqlite"><i class="fas fa-circle"></i></span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">E5 Model</span>
+                        <span class="status-indicator" id="status-e5"><i class="fas fa-circle"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="university-badge">
+                    <i class="fas fa-university"></i>
+                    <span>Universitas AMIKOM Yogyakarta</span>
+                </div>
+                <p class="version-text">Multi-Agent RAG v1.0</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="top-bar-title">
+                    <h2 id="page-title">Chat Akademik</h2>
+                    <span class="top-bar-subtitle">S1 Informatika — Kurikulum 2025</span>
+                </div>
+                <div class="top-bar-actions">
+                    <button class="btn-icon" id="btn-clear-chat" title="Hapus percakapan">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button class="btn-icon" id="btn-toggle-sources" title="Toggle sumber">
+                        <i class="fas fa-quote-right"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Chat Page -->
+            <div class="page-content active" id="page-chat">
+                <div class="chat-container">
+                    <!-- Messages Area -->
+                    <div class="messages-area" id="messages-area">
+                        <!-- Welcome Message -->
+                        <div class="welcome-container" id="welcome-container">
+                            <div class="welcome-icon">
+                                <div class="welcome-icon-ring"></div>
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>Selamat Datang di Layanan Akademik AI</h3>
+                            <p>Tanyakan seputar akademik, jadwal, atau administrasi S1 Informatika AMIKOM Yogyakarta</p>
+                            
+                            <div class="quick-actions">
+                                <button class="quick-action-btn" data-query="Apa saja mata kuliah konsentrasi di S1 Informatika?">
+                                    <i class="fas fa-book"></i>
+                                    <span>Mata Kuliah Konsentrasi</span>
+                                </button>
+                                <button class="quick-action-btn" data-query="Bagaimana prosedur pengajuan cuti kuliah?">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Prosedur Cuti Kuliah</span>
+                                </button>
+                                <button class="quick-action-btn" data-query="Kapan jadwal KRS semester ini?">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Jadwal KRS</span>
+                                </button>
+                                <button class="quick-action-btn" data-query="Berapa SKS minimum untuk kelulusan?">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Syarat Kelulusan</span>
+                                </button>
+                                <button class="quick-action-btn" data-query="Bagaimana cara legalisir ijazah?">
+                                    <i class="fas fa-stamp"></i>
+                                    <span>Legalisir Dokumen</span>
+                                </button>
+                                <button class="quick-action-btn" data-query="Apa itu penyetaraan mata kuliah?">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Penyetaraan MK</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="input-area">
+                        <div class="input-wrapper">
+                            <div class="input-container">
+                                <textarea 
+                                    id="chat-input" 
+                                    placeholder="Tanyakan seputar akademik, jadwal, atau administrasi..." 
+                                    rows="1"
+                                    maxlength="500"
+                                ></textarea>
+                                <button class="send-btn" id="send-btn" disabled>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class="input-footer">
+                                <span class="char-count"><span id="char-count">0</span>/500</span>
+                                <span class="input-hint">Enter untuk kirim · Shift+Enter baris baru</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sources Panel -->
+                <div class="sources-panel" id="sources-panel">
+                    <div class="sources-header">
+                        <h3><i class="fas fa-quote-right"></i> Sumber & Sitasi</h3>
+                        <button class="btn-icon btn-close-sources" id="btn-close-sources">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="sources-content" id="sources-content">
+                        <div class="sources-empty">
+                            <i class="fas fa-search"></i>
+                            <p>Sumber akan muncul setelah Anda bertanya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Page -->
+            <div class="page-content" id="page-status">
+                <div class="status-page">
+                    <div class="status-grid" id="status-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sources Page -->
+            <div class="page-content" id="page-sources">
+                <div class="sources-page">
+                    <div class="domain-cards">
+                        <div class="domain-card">
+                            <div class="domain-icon academic"><i class="fas fa-book"></i></div>
+                            <h3>Akademik</h3>
+                            <p>Kurikulum, mata kuliah, SKS, konsentrasi, penyetaraan, ketentuan kelulusan</p>
+                            <div class="domain-stats">
+                                <span><i class="fas fa-file-alt"></i> 243 chunks</span>
+                                <span><i class="fas fa-check-circle"></i> ACTIVE</span>
+                            </div>
+                        </div>
+                        <div class="domain-card">
+                            <div class="domain-icon schedule"><i class="fas fa-calendar"></i></div>
+                            <h3>Jadwal</h3>
+                            <p>Kalender akademik, agenda semester, KRS, ujian, perkuliahan</p>
+                            <div class="domain-stats">
+                                <span><i class="fas fa-file-alt"></i> 38 chunks</span>
+                                <span><i class="fas fa-clock"></i> CURRENT + ARCHIVE</span>
+                            </div>
+                        </div>
+                        <div class="domain-card">
+                            <div class="domain-icon admin"><i class="fas fa-clipboard-list"></i></div>
+                            <h3>Administrasi</h3>
+                            <p>KRS manual, cuti, SKAK, legalisir, KTM, perubahan data PDDIKTI</p>
+                            <div class="domain-stats">
+                                <span><i class="fas fa-file-alt"></i> 25 chunks</span>
+                                <span><i class="fas fa-check-circle"></i> ACTIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-info-card">
+                        <h3><i class="fas fa-database"></i> Data Pipeline</h3>
+                        <div class="pipeline-flow">
+                            <div class="pipeline-step done">
+                                <div class="step-icon"><i class="fas fa-file-pdf"></i></div>
+                                <span>Raw Corpus</span>
+                            </div>
+                            <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="pipeline-step done">
+                                <div class="step-icon"><i class="fas fa-broom"></i></div>
+                                <span>Clean Corpus</span>
+                            </div>
+                            <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="pipeline-step done">
+                                <div class="step-icon"><i class="fas fa-puzzle-piece"></i></div>
+                                <span>306 Chunks</span>
+                            </div>
+                            <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="pipeline-step done">
+                                <div class="step-icon"><i class="fas fa-vector-square"></i></div>
+                                <span>Embeddings</span>
+                            </div>
+                            <div class="pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="pipeline-step done">
+                                <div class="step-icon"><i class="fas fa-database"></i></div>
+                                <span>FAISS + SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
