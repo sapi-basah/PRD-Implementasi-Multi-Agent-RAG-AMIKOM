@@ -32,9 +32,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+import os
+from fastapi.responses import FileResponse
+
 app.include_router(health.router)        # router already has prefix /api/v1
 app.include_router(query.router, prefix="/api")
 app.include_router(evaluation.router, prefix="/api")
+
+if os.path.exists("static"):
+    app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def read_root():
@@ -43,6 +49,12 @@ def read_root():
         "status": "RUNNING",
         "docs_url": "/docs"
     }
+
+@app.get("/ui")
+def read_ui():
+    if os.path.exists("static/index.html"):
+        return FileResponse("static/index.html")
+    return read_root()
 
 if __name__ == "__main__":
     import uvicorn
