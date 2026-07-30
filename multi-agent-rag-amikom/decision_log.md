@@ -1,16 +1,15 @@
-# Decision Log - Multi-Agent RAG AMIKOM
+# Decision Log — Multi-Agent RAG AMIKOM V1.1
 
-## Decision 001: Operational Mode `DEVELOPMENT_DEGRADED`
-- **Tanggal**: 2026-07-28
-- **Konteks**: Model query encoder `Xenova/multilingual-e5-small` belum ter-mount di `models/e5/`.
-- **Keputusan**: Sistem berjalan dalam mode `DEVELOPMENT_DEGRADED` dengan `retrieval_backend="BM25_FALLBACK"` dan `system_readiness="DEGRADED"`. Gate final Multi-Agent tetap BLOCKED sampai model E5 valid.
+## Catatan Keputusan
 
-## Decision 002: Dynamic Portability & Immutable Storage
-- **Tanggal**: 2026-07-28
-- **Konteks**: NFR-002 melarang hardcoded path absolut.
-- **Keputusan**: Seluruh konfigurasi path dimuat relatif menggunakan `pydantic-settings` atau `.env`. Folder `data/immutable/` diperlakukan secara strictly read-only.
+1. **Keputusan Status Dataset Baseline vs Gold (2026-07-30)**
+   - **Keputusan:** Menggunakan `Baseline_RAG_Retrieval_Test_RAG_AMIKOM_V1` sebagai provisional test fixture.
+   - **Rationale:** ZIP `Final_Multi_Agent_Foundation_Dataset_RAG_AMIKOM_V1.zip` tidak ada di repo, sehingga 36 HUMAN_PASS dicatat pada `MISSING_FINAL_DATASET_REPORT.md` dan `final_ready` dijaga tetap `false`.
 
-## Decision 003: Safe Observability (PII Redaction)
-- **Tanggal**: 2026-07-28
-- **Konteks**: NFR-003 & FR-016 melarang penyimpanan data pribadi/PII (NIM, KTP, Nilai, dll) di dalam log.
-- **Keputusan**: Modul logging menggunakan PII redactor deterministik sebelum mencatat payload request/response.
+2. **Keputusan LLM Fallback (2026-07-30)**
+   - **Keputusan:** Menggunakan `Evidence Selector V2` sebagai generator fallback deterministik ketika LLM provider tidak terkonfigurasi.
+   - **Rationale:** Memastikan sistem tetap 100% dapat dijalankan dan diuji tanpa memerlukan API key eksternal.
+
+3. **Keputusan Metadata-First FAISS Candidate Search (2026-07-30)**
+   - **Keputusan:** Mengueri kandidat index dari SQLite berdasarkan `retrieval_namespace` dan `historical_only` sebelum memanggil FAISS.
+   - **Rationale:** Mencegah archive leakage dan persilangan antar domain akademik, jadwal, dan administrasi.

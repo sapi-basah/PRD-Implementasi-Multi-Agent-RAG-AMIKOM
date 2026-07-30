@@ -1,0 +1,25 @@
+requirement_id,requirement_name,current_status,target_file,test_file,gate,evidence,final_status
+FR-001,API Menerima Query,IMPLEMENTED,app/api/query.py,tests/test_api_query.py,F1,QueryRequest validated & request_id generated,TESTED_PASS
+FR-002,Pre-control Sebelum Retrieval,IMPLEMENTED,app/controls/pre_control.py,tests/test_controls.py,F3,PII & Scope & Blocker short-circuit active,TESTED_PASS
+FR-003,Coordinator Classification,IMPLEMENTED,app/coordinator/coordinator.py,tests/test_coordinator.py,F5,Multi-intent & temporal classification active,TESTED_PASS
+FR-004,Coordinator Decomposition,IMPLEMENTED,app/coordinator/coordinator.py,tests/test_coordinator.py,F5,SubQueryTasks created per intent,TESTED_PASS
+FR-005,Academic Agent Retrieval,IMPLEMENTED,app/agents/academic.py,tests/test_agents.py,F4,active_academic namespace filtered,TESTED_PASS
+FR-006,Schedule Agent Temporal Filtering,IMPLEMENTED,app/agents/schedule.py,tests/test_agents.py,F4,Archive leakage prevented in current mode,TESTED_PASS
+FR-007,Administration Agent Response,IMPLEMENTED,app/agents/admin.py,tests/test_agents.py,F4,active_administration & refusal active,TESTED_PASS
+FR-008,E5 Query Encoder Local,IMPLEMENTED,app/retrieval/e5_encoder.py,tests/test_e5_retrieval.py,F2,384 float32 L2 normalized vector,TESTED_PASS
+FR-009,Metadata-first Filtering,IMPLEMENTED,app/data/store.py,tests/test_data_layer.py,F2,SQLite candidates passed to FAISS,TESTED_PASS
+FR-010,Per-agent Retrieval & Merge,IMPLEMENTED,app/retrieval/service.py,tests/test_retrieval.py,F2,Multi-namespace deterministic merge,TESTED_PASS
+FR-011,Context Assembly Traceable,IMPLEMENTED,app/schemas/__init__.py,tests/test_generator.py,F6,chunk_id & source_id & locator present,TESTED_PASS
+FR-012,LLM Evidence-only Output,IMPLEMENTED,app/generator/llm.py,tests/test_generator.py,F6,Evidence Selector V2 & Prompt contract,TESTED_PASS
+FR-013,Evidence Selector Fallback,IMPLEMENTED,app/generator/llm.py,tests/test_generator.py,F6,EVIDENCE_SELECTOR_V2 active,TESTED_PASS
+FR-014,Citation Formatter,IMPLEMENTED,app/generator/citation_formatter.py,tests/test_generator.py,F6,Valid source_id & chunk_id & locator,TESTED_PASS
+FR-015,Verifier Final Guardrail,IMPLEMENTED,app/verifier/guardrail.py,tests/test_controls.py,F3,13 Guardrail checks verified,TESTED_PASS
+FR-016,Response Modes Support,IMPLEMENTED,app/schemas/__init__.py,tests/test_controls.py,F3,ANSWER/ABSTAIN/ESCALATE/HANDOFF/REFUSE,TESTED_PASS
+FR-017,Audit Log Safe,IMPLEMENTED,app/observability/logging.py,tests/test_health.py,F1,PII redacted in logs,TESTED_PASS
+FR-018,Readiness Endpoint 3-Level,IMPLEMENTED,app/api/health.py,tests/test_health.py,F1,dev_ready / impl_validated / final_ready,TESTED_PASS
+FR-019,Evaluation Pipeline,IMPLEMENTED,app/evaluation/runner.py,tests/test_health.py,F8,CORE + SUPPLEMENTARY + HELDOUT metrics,TESTED_PASS
+FR-020,Provisional Dataset Policy,IMPLEMENTED,docs/PRD_STATUS_ADDENDUM_2026-07-30.md,tests/test_health.py,F0,Baseline dataset used for development,TESTED_PASS
+FR-021,Final Gold Dataset Policy,BLOCKED,MISSING_FINAL_DATASET_REPORT.md,tests/test_health.py,F8,ZIP file not in repo,BLOCKED
+FR-022,Immutable Input Read-only,IMPLEMENTED,input_inventory.json,tests/test_data_layer.py,F0,Read-only verification & SHA-256,TESTED_PASS
+FR-023,LLM Provider Configurable,IMPLEMENTED,app/config/settings.py,tests/test_generator.py,F6,Environment-based LLM config,TESTED_PASS
+FR-024,No Evaluation-ID Hardcoding,IMPLEMENTED,app/controls/pre_control.py,tests/test_controls.py,F0,Pure rule-based matching,TESTED_PASS

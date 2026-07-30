@@ -1,27 +1,45 @@
-from fastapi import APIRouter
-from pydantic import BaseModel
+"""Evaluation API router (POST /api/v1/evaluation/run & GET /api/v1/evaluation/report)."""
+
 import json
 import os
-from app.config import settings
+from typing import Any, Dict
 
-router = APIRouter()
+from fastapi import APIRouter, BackgroundTasks, HTTPException
 
-class EvaluationReport(BaseModel):
-    total_cases: int
-    pass_rate: float
-    details: list
+from app.config.settings import settings
+from app.evaluation.runner import run_evaluation
 
-@router.get("/evaluation/report", response_model=EvaluationReport)
-def get_evaluation_report():
-    report_path = os.path.join(settings.BASE_DIR, "evaluation_report.json")
+router = APIRouter(tags=["Evaluation"])
+
+
+@router.post("/api/v1/evaluation/run")
+@router.post("/api/evaluation/run")
+def trigger_evaluation(background_tasks: BackgroundTasks) -> Dict[str, Any]:
+    background_tasks.add_task(run_evaluation)
+    return {
+        "status": "QUEUED",
+        "message": "Evaluasi telah dimasukkan ke dalam antrean latar belakang.",
+    }
+
+
+@router.get("/api/v1/evaluation/report")
+@router.get("/api/evaluation/report")
+def get_evaluation_report() -> Dict[str, Any]:
+    report_path = os.path.join(settings.DATA_ROOT, "../../var/results/final_metrics.json")
     if not os.path.exists(report_path):
-        return EvaluationReport(total_cases=0, pass_rate=0.0, details=[])
-        
-    with open(report_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-        
-    return EvaluationReport(
-        total_cases=data.get("total_cases", 0),
-        pass_rate=data.get("pass_rate", 0.0),
-        details=data.get("details", [])
-    )
+        report_path = "./evaluation_report.json"
+
+    if not os.path.exists(report_path):
+        return {
+            "total_cases": 0,
+            "pass_rate": 0.0,
+            "status": "NO_REPORT",
+            "details": [],
+        }
+
+    try:
+        with open(report_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to read report: {e}")

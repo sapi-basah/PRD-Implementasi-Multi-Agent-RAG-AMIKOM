@@ -4,6 +4,7 @@ from app.controls.pre_control import pre_control
 from app.controls.pii_checker import check_pii
 from app.controls.scope_checker import check_out_of_scope
 
+
 class TestControls(unittest.TestCase):
     def test_pii_checker(self):
         self.assertTrue(check_pii("NIM saya 23.11.5887, tolong bantu."))
@@ -22,12 +23,12 @@ class TestControls(unittest.TestCase):
         res = pre_control.validate_request("NIM 23.11.5887")
         self.assertTrue(res.short_circuit)
         self.assertEqual(res.response_mode, "REFUSE")
-        
+
     def test_pre_control_scope_refusal(self):
         res = pre_control.validate_request("cara bayar denda")
         self.assertTrue(res.short_circuit)
         self.assertEqual(res.response_mode, "REFUSE")
-        
+
     def test_pre_control_cf002(self):
         res = pre_control.validate_request("Kalau IPK 2.00 apakah bisa lulus?")
         self.assertTrue(res.short_circuit)
@@ -43,7 +44,25 @@ class TestControls(unittest.TestCase):
     def test_pre_control_normal(self):
         res = pre_control.validate_request("Bagaimana prosedur cuti akademik?")
         self.assertFalse(res.short_circuit)
-        self.assertEqual(res.response_mode, "AUTO")
+        self.assertEqual(res.response_mode, "ANSWER")
+
+    def test_pii_refusal(self):
+        """Backward compat test name."""
+        res = pre_control.validate_request("Tolong cek NIM 23.11.5887")
+        self.assertTrue(res.short_circuit)
+        self.assertEqual(res.response_mode, "REFUSE")
+
+    def test_control_registry_loaded(self):
+        self.assertGreater(len(control_registry.control_records), 0)
+
+    def test_blocked_registry(self):
+        blocked_ids = control_registry.get_all_blocked_chunk_ids()
+        self.assertIsInstance(blocked_ids, list)
+
+    def test_conflict_registry(self):
+        conflict_ids = control_registry.get_all_conflict_chunk_ids()
+        self.assertIsInstance(conflict_ids, list)
+
 
 if __name__ == "__main__":
     unittest.main()

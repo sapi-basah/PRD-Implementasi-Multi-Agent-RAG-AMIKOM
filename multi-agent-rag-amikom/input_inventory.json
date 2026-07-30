@@ -1,50 +1,111 @@
 {
-  "files": {
-    "Vector_Database_RAG_AMIKOM_V1.zip": {
-      "exists": true,
-      "size_bytes": 1272705,
-      "sha256": "ad8b484ca322f20e82993d9a90b18df6e69c9aa968c4e03b2440d1828862bade"
+  "inventory_version": "1.1",
+  "generated_at": "2026-07-30T11:12:00+07:00",
+  "immutable_inputs": {
+    "vector_database": {
+      "faiss_index": {
+        "path": "data/immutable/vector_db/Vector_Database_RAG_AMIKOM_V1/01_database/faiss.index",
+        "sha256": "e7d83504bfbbc131049896f66921f4b00535dd22b0c0c74cfdf25811ac69f4b7",
+        "status": "VALID"
+      },
+      "metadata_sqlite": {
+        "path": "data/immutable/vector_db/Vector_Database_RAG_AMIKOM_V1/01_database/metadata.sqlite",
+        "sha256": "0d1ee79ec95d0341a448218681d95b04f85a5cb61ac5942611f194592c6b4b4d",
+        "record_count": 306,
+        "vector_dimension": 384,
+        "namespaces": {
+          "active_academic": 243,
+          "active_administration": 25,
+          "active_dynamic_schedule": 10,
+          "active_schedule": 3,
+          "archive_schedule": 25
+        },
+        "status": "VALID"
+      }
     },
-    "Chunk_Corpus_RAG_AMIKOM_V1.zip": {
-      "exists": true,
-      "size_bytes": 679438,
-      "sha256": "6812a47038df4e11386b8f3fbdf6ec96dd517efd2ad1ee50a0b1bb87f2b79589"
+    "chunk_corpus": {
+      "corpus_jsonl": {
+        "path": "data/immutable/chunk/Chunk_Corpus_RAG_AMIKOM_V1/Chunk_Corpus_RAG_AMIKOM_V1.jsonl",
+        "sha256": "9bc4147b2872db0dba4ff46b0d1050662f61975b672555212ddabdf5b68e174e",
+        "record_count": 306,
+        "status": "VALID"
+      },
+      "chunk_control": {
+        "path": "data/immutable/chunk/Chunk_Corpus_RAG_AMIKOM_V1/chunk_control.jsonl",
+        "sha256": "7683e6fae94d76d4c9b7e2538e257c9da4bc1221e2aff8bdd1e8480752253e6b",
+        "status": "VALID"
+      },
+      "chunk_conflict_verifier": {
+        "path": "data/immutable/chunk/Chunk_Corpus_RAG_AMIKOM_V1/chunk_conflict_verifier.jsonl",
+        "sha256": "701ef41720f11f718becabe2b0915e16e14beb6e9ae26994c488e062503e4486",
+        "status": "VALID"
+      },
+      "chunk_blocked_verifier": {
+        "path": "data/immutable/chunk/Chunk_Corpus_RAG_AMIKOM_V1/chunk_blocked_verifier.jsonl",
+        "sha256": "7aed7e89a9f974e979f09d15a86d8adda054c076393addb7b225824ee53fe1dc",
+        "status": "VALID"
+      }
     },
-    "Baseline_RAG_Retrieval_Test_RAG_AMIKOM_V1.zip": {
-      "exists": true,
-      "size_bytes": 212862,
-      "sha256": "60d2208d6f007be1964a4526d955e77d36f7e54a888ce4e5b7193ad639685ac3"
+    "configs": {
+      "embedding_config": {
+        "path": "data/immutable/configs/Embedding_Config_RAG_AMIKOM_V1.json",
+        "sha256": "df0b999d321321c94daa210fb3316ba0465e744dbde37d24a882125b1a8e3ede",
+        "status": "VALID"
+      },
+      "retrieval_config": {
+        "path": "data/immutable/configs/Retrieval_Config_RAG_AMIKOM_V1.json",
+        "sha256": "7312045ed32620bc2d7f701f8d6d289111837aa5c2c758ff4a30c535d93c59c8",
+        "status": "VALID"
+      },
+      "generator_config": {
+        "path": "data/immutable/configs/Generator_Config_Final_RAG_AMIKOM_V1.json",
+        "sha256": "f8bc32652abb03fb53f913c9cc099cea96b0d0d90d546643ac2f593728fab395",
+        "status": "VALID",
+        "note": "Referensi baseline/fallback, bukan model final wajib"
+      }
     },
-    "Embedding_Config_RAG_AMIKOM_V1.json": {
-      "exists": true,
-      "size_bytes": 3121,
-      "sha256": "df0b999d321321c94daa210fb3316ba0465e744dbde37d24a882125b1a8e3ede"
+    "e5_model": {
+      "model_id": "Xenova/multilingual-e5-small",
+      "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "base_path": "models/e5/761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "files": {
+        "config.json": {
+          "sha256": "cb99455288675345e1a4f411438d5d0adbba5fbd3a67ea4fb03c015433b996c1",
+          "status": "HASH_MATCH"
+        },
+        "tokenizer.json": {
+          "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+          "status": "HASH_MATCH"
+        },
+        "tokenizer_config.json": {
+          "sha256": "a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b",
+          "status": "HASH_MATCH"
+        },
+        "onnx/model_int8.onnx": {
+          "sha256": "4d24e2bc01a447951524466ef533e52944bf48509e6552810bcee1a2711cb02c",
+          "status": "HASH_MATCH"
+        }
+      },
+      "e5_runtime_status": "AVAILABLE",
+      "smoke_test": "PENDING_RUNTIME_CHECK"
     },
-    "Vector_Database_Config_RAG_AMIKOM_V1.json": {
-      "exists": true,
-      "size_bytes": 2851,
-      "sha256": "5c5f324032831d4a6d6b3f1ba47925850a4121e8e53000e4177dcecc60bb4a13"
-    },
-    "final_package_validation.json": {
-      "exists": true,
-      "size_bytes": 10995,
-      "sha256": "3063e2148de2aa251359576885a8cd9271d632c110b84a3e1d91bb59b6cb02ad"
-    },
-    "PRD_Multi_Agent_RAG_AMIKOM_Antigravity.md": {
-      "exists": true,
-      "size_bytes": 21653,
-      "sha256": "a481d5db89d38b83da35325ad745ee6cde4d4245c6324bbfff3039f847361206"
-    },
-    "Retrieval_Recovery_Prompt.md": {
-      "exists": true,
-      "size_bytes": 5642,
-      "sha256": "e9694c042a68edb2557d482c7a8409ff05eca19d0ece80bf6f1161cc52efac78"
-    },
-    "Inventaris_Sumber_RAG_AMIKOM_V2_Pasca_Scope_Freeze.xlsx": {
-      "exists": true,
-      "size_bytes": 63113,
-      "sha256": "a4713a1875cc02e35de39c9ded1c84dafbac200c3c0c61735a2524be117cadcb"
+    "chunk_id_connectivity": {
+      "sqlite_to_corpus_missing": 0,
+      "corpus_to_sqlite_missing": 0,
+      "status": "VALID"
     }
   },
-  "status": "PASS"
+  "final_foundation_dataset": {
+    "status": "NOT_FOUND",
+    "expected_zip": "Final_Multi_Agent_Foundation_Dataset_RAG_AMIKOM_V1.zip",
+    "note": "ZIP file tidak ditemukan di repository. Lihat MISSING_FINAL_DATASET_REPORT.md"
+  },
+  "readiness_gate": {
+    "path": "Multi_Agent_Readiness_Gate_RAG_AMIKOM_V1.json",
+    "status": "FOUND_IN_REPO_ROOT"
+  },
+  "overall_preflight_status": "DEVELOPMENT_READY",
+  "blockers": [
+    "Final_Multi_Agent_Foundation_Dataset_RAG_AMIKOM_V1.zip tidak tersedia"
+  ]
 }

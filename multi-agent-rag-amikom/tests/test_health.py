@@ -4,6 +4,7 @@ from app.main import app
 from app.schemas import QueryRequest, FinalResponse, Citation, VerificationResult
 from app.observability import redact_pii
 
+
 class TestHealthAndSchemas(unittest.TestCase):
     def setUp(self):
         self.client = TestClient(app)
@@ -27,9 +28,12 @@ class TestHealthAndSchemas(unittest.TestCase):
         response = self.client.get("/api/v1/readiness")
         self.assertEqual(response.status_code, 200)
         data = response.json()
-        self.assertIn(data["system_readiness"], ["PRODUCTION_CANDIDATE", "DEGRADED"])
+        # V1.1: readiness has 3 levels
+        self.assertIn("development_ready", data)
+        self.assertIn("implementation_validated", data)
+        self.assertIn("final_ready", data)
         self.assertIn(data["retrieval_backend"], ["E5_FAISS", "BM25_FALLBACK"])
-        self.assertEqual(data["vector_database_status"], "PASS")
+        self.assertTrue(data["development_ready"]["status"])
 
     def test_query_request_schema(self):
         req = QueryRequest(query="Bagaimana cara pengajuan cuti?")
@@ -42,6 +46,14 @@ class TestHealthAndSchemas(unittest.TestCase):
         self.assertIn("[REDACTED_NIM]", redacted)
         self.assertNotIn("23.11.5887", redacted)
 
+    def test_ui_endpoint(self):
+        response = self.client.get("/ui")
+        self.assertEqual(response.status_code, 200)
+
+    def test_swagger_docs(self):
+        response = self.client.get("/docs")
+        self.assertEqual(response.status_code, 200)
+
+
 if __name__ == "__main__":
     unittest.main()
-
