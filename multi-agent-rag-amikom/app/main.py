@@ -3,6 +3,7 @@
 import os
 import time
 import uuid
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -53,8 +54,12 @@ app.include_router(query.router)
 app.include_router(evaluation.router)
 app.include_router(sources.router)
 
-if os.path.exists("static"):
-    app.mount("/static", StaticFiles(directory="static"), name="static")
+PROJECT_ROOT = Path(__file__).parent.parent
+STATIC_DIR = PROJECT_ROOT / "static"
+INDEX_HTML = STATIC_DIR / "index.html"
+
+if STATIC_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 
 @app.get("/")
@@ -72,8 +77,8 @@ def read_root():
 
 @app.get("/ui")
 def read_ui():
-    if os.path.exists("static/index.html"):
-        return FileResponse("static/index.html")
+    if INDEX_HTML.exists():
+        return FileResponse(str(INDEX_HTML))
     return read_root()
 
 

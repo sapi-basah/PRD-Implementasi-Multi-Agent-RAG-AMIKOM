@@ -43,13 +43,13 @@
                     <i class="fas fa-book-open"></i>
                     <span>Sumber Dokumen</span>
                 </a>
-                <a href="#" class="nav-item" data-page="status">
+                <a href="#" class="nav-item" data-page="status" style="display: none;">
                     <i class="fas fa-server"></i>
                     <span>Status Sistem</span>
                 </a>
             </nav>
 
-            <div class="sidebar-status">
+            <div class="sidebar-status" style="display: none;">
                 <div class="nav-section-label">System Status</div>
                 <div class="status-card" id="system-status-card">
                     <div class="status-row">
@@ -153,17 +153,17 @@
                         <div class="input-wrapper">
                             <div class="input-container">
                                 <textarea 
-                                    id="chat-input" 
+                                    id="query-input" 
                                     placeholder="Tanyakan seputar akademik, jadwal, atau administrasi..." 
                                     rows="1"
                                     maxlength="500"
                                 ></textarea>
-                                <button class="send-btn" id="send-btn" disabled>
+                                <button class="send-btn" id="send-button" disabled>
                                     <i class="fas fa-paper-plane"></i>
                                 </button>
                             </div>
                             <div class="input-footer">
-                                <span class="char-count"><span id="char-count">0</span>/500</span>
+                                <span class="char-count"><span id="char-counter">0</span>/500</span>
                                 <span class="input-hint">Enter untuk kirim · Shift+Enter baris baru</span>
                             </div>
                         </div>
